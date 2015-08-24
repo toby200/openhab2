@@ -351,11 +351,11 @@
     <modules>
         <module>addons</module>
         <module>bundles</module>
-        <module>features</module>
+        <!-- <module>features</module> -->
         <module>karaf_features</module>
-        <module>products</module>
+        <!-- <module>products</module> -->
         <module>targetplatform</module>
-        <module>distribution</module>
+        <!-- <module>distribution</module> -->
         <module>karaf_distribution</module>
     </modules>
         

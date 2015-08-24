@@ -10,6 +10,12 @@ package org.openhab.core.internal.item;
 
 import java.util.Collections;
 import java.util.Set;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.ConfigurationPolicy;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
+import org.apache.felix.scr.annotations.Service;
 
 import org.eclipse.smarthome.core.items.GroupItem;
 import org.eclipse.smarthome.core.items.Item;
@@ -29,10 +35,13 @@ import org.eclipse.smarthome.model.sitemap.impl.SitemapImpl;
  * @author Kai Kreuzer
  *
  */
+@Component(name = "org.openhab.defaultsitemapprovider", policy = ConfigurationPolicy.OPTIONAL, immediate = false)
+@Service()
 public class DefaultSitemapProvider implements SitemapProvider {
 
-	private static final String SITEMAP_NAME = "_default";
-	
+    private static final String SITEMAP_NAME = "_default";
+
+    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.STATIC, bind = "setItemRegistry", unbind= "unsetItemRegistry")
     private ItemRegistry itemRegistry;
 
 	protected void setItemRegistry(ItemRegistry itemRegistry) {

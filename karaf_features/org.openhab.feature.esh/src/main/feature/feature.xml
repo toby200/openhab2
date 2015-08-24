@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
+  <feature name="${project.artifactId}" description="${project.name}" version="${project.version}">
+    <details>${project.description}</details>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.config.core.groupId}/${dep.bsn.org.eclipse.smarthome.config.core.artifactId}/${dep.bsn.org.eclipse.smarthome.config.core.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.config.discovery.groupId}/${dep.bsn.org.eclipse.smarthome.config.discovery.artifactId}/${dep.bsn.org.eclipse.smarthome.config.discovery.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.config.dispatch.groupId}/${dep.bsn.org.eclipse.smarthome.config.dispatch.artifactId}/${dep.bsn.org.eclipse.smarthome.config.dispatch.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.config.xml.groupId}/${dep.bsn.org.eclipse.smarthome.config.xml.artifactId}/${dep.bsn.org.eclipse.smarthome.config.xml.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.groupId}/${dep.bsn.org.eclipse.smarthome.core.artifactId}/${dep.bsn.org.eclipse.smarthome.core.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.autoupdate.groupId}/${dep.bsn.org.eclipse.smarthome.core.autoupdate.artifactId}/${dep.bsn.org.eclipse.smarthome.core.autoupdate.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.binding.xml.groupId}/${dep.bsn.org.eclipse.smarthome.core.binding.xml.artifactId}/${dep.bsn.org.eclipse.smarthome.core.binding.xml.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.id.groupId}/${dep.bsn.org.eclipse.smarthome.core.id.artifactId}/${dep.bsn.org.eclipse.smarthome.core.id.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.persistence.groupId}/${dep.bsn.org.eclipse.smarthome.core.persistence.artifactId}/${dep.bsn.org.eclipse.smarthome.core.persistence.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.scheduler.groupId}/${dep.bsn.org.eclipse.smarthome.core.scheduler.artifactId}/${dep.bsn.org.eclipse.smarthome.core.scheduler.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.core.scriptengine.groupId}/${dep.bsn.org.eclipse.smarthome.core.scriptengine.artifactId}/${dep.bsn.org.eclipse.smarthome.core.scriptengine.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.thing.groupId}/${dep.bsn.org.eclipse.smarthome.core.thing.artifactId}/${dep.bsn.org.eclipse.smarthome.core.thing.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.thing.xml.groupId}/${dep.bsn.org.eclipse.smarthome.core.thing.xml.artifactId}/${dep.bsn.org.eclipse.smarthome.core.thing.xml.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.core.transform.groupId}/${dep.bsn.org.eclipse.smarthome.core.transform.artifactId}/${dep.bsn.org.eclipse.smarthome.core.transform.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.console.groupId}/${dep.bsn.org.eclipse.smarthome.io.console.artifactId}/${dep.bsn.org.eclipse.smarthome.io.console.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.console.eclipse.groupId}/${dep.bsn.org.eclipse.smarthome.io.console.eclipse.artifactId}/${dep.bsn.org.eclipse.smarthome.io.console.eclipse.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.monitor.groupId}/${dep.bsn.org.eclipse.smarthome.io.monitor.artifactId}/${dep.bsn.org.eclipse.smarthome.io.monitor.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.multimedia.groupId}/${dep.bsn.org.eclipse.smarthome.io.multimedia.artifactId}/${dep.bsn.org.eclipse.smarthome.io.multimedia.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.net.groupId}/${dep.bsn.org.eclipse.smarthome.io.net.artifactId}/${dep.bsn.org.eclipse.smarthome.io.net.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.rest.groupId}/${dep.bsn.org.eclipse.smarthome.io.rest.artifactId}/${dep.bsn.org.eclipse.smarthome.io.rest.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.rest.core.groupId}/${dep.bsn.org.eclipse.smarthome.io.rest.core.artifactId}/${dep.bsn.org.eclipse.smarthome.io.rest.core.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.rest.sitemap.groupId}/${dep.bsn.org.eclipse.smarthome.io.rest.sitemap.artifactId}/${dep.bsn.org.eclipse.smarthome.io.rest.sitemap.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.rest.sse.groupId}/${dep.bsn.org.eclipse.smarthome.io.rest.sse.artifactId}/${dep.bsn.org.eclipse.smarthome.io.rest.sse.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.transport.mdns.groupId}/${dep.bsn.org.eclipse.smarthome.io.transport.mdns.artifactId}/${dep.bsn.org.eclipse.smarthome.io.transport.mdns.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.transport.mqtt.groupId}/${dep.bsn.org.eclipse.smarthome.io.transport.mqtt.artifactId}/${dep.bsn.org.eclipse.smarthome.io.transport.mqtt.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.io.transport.upnp.groupId}/${dep.bsn.org.eclipse.smarthome.io.transport.upnp.artifactId}/${dep.bsn.org.eclipse.smarthome.io.transport.upnp.version}</bundle>
+    <bundle start-level="55">mvn:${dep.bsn.org.eclipse.smarthome.model.core.groupId}/${dep.bsn.org.eclipse.smarthome.model.core.artifactId}/${dep.bsn.org.eclipse.smarthome.model.core.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.item.groupId}/${dep.bsn.org.eclipse.smarthome.model.item.artifactId}/${dep.bsn.org.eclipse.smarthome.model.item.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.item.runtime.groupId}/${dep.bsn.org.eclipse.smarthome.model.item.runtime.artifactId}/${dep.bsn.org.eclipse.smarthome.model.item.runtime.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.persistence.groupId}/${dep.bsn.org.eclipse.smarthome.model.persistence.artifactId}/${dep.bsn.org.eclipse.smarthome.model.persistence.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.persistence.runtime.groupId}/${dep.bsn.org.eclipse.smarthome.model.persistence.runtime.artifactId}/${dep.bsn.org.eclipse.smarthome.model.persistence.runtime.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.rule.groupId}/${dep.bsn.org.eclipse.smarthome.model.rule.artifactId}/${dep.bsn.org.eclipse.smarthome.model.rule.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.rule.runtime.groupId}/${dep.bsn.org.eclipse.smarthome.model.rule.runtime.artifactId}/${dep.bsn.org.eclipse.smarthome.model.rule.runtime.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.script.groupId}/${dep.bsn.org.eclipse.smarthome.model.script.artifactId}/${dep.bsn.org.eclipse.smarthome.model.script.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.script.runtime.groupId}/${dep.bsn.org.eclipse.smarthome.model.script.runtime.artifactId}/${dep.bsn.org.eclipse.smarthome.model.script.runtime.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.sitemap.groupId}/${dep.bsn.org.eclipse.smarthome.model.sitemap.artifactId}/${dep.bsn.org.eclipse.smarthome.model.sitemap.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.sitemap.runtime.groupId}/${dep.bsn.org.eclipse.smarthome.model.sitemap.runtime.artifactId}/${dep.bsn.org.eclipse.smarthome.model.sitemap.runtime.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.thing.groupId}/${dep.bsn.org.eclipse.smarthome.model.thing.artifactId}/${dep.bsn.org.eclipse.smarthome.model.thing.version}</bundle>
+    <bundle start-level="53">mvn:${dep.bsn.org.eclipse.smarthome.model.thing.runtime.groupId}/${dep.bsn.org.eclipse.smarthome.model.thing.runtime.artifactId}/${dep.bsn.org.eclipse.smarthome.model.thing.runtime.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.storage.mapdb.groupId}/${dep.bsn.org.eclipse.smarthome.storage.mapdb.artifactId}/${dep.bsn.org.eclipse.smarthome.storage.mapdb.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.transform.exec.groupId}/${dep.bsn.org.eclipse.smarthome.transform.exec.artifactId}/${dep.bsn.org.eclipse.smarthome.transform.exec.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.transform.javascript.groupId}/${dep.bsn.org.eclipse.smarthome.transform.javascript.artifactId}/${dep.bsn.org.eclipse.smarthome.transform.javascript.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.transform.map.groupId}/${dep.bsn.org.eclipse.smarthome.transform.map.artifactId}/${dep.bsn.org.eclipse.smarthome.transform.map.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.transform.regex.groupId}/${dep.bsn.org.eclipse.smarthome.transform.regex.artifactId}/${dep.bsn.org.eclipse.smarthome.transform.regex.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.transform.xpath.groupId}/${dep.bsn.org.eclipse.smarthome.transform.xpath.artifactId}/${dep.bsn.org.eclipse.smarthome.transform.xpath.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.transform.xslt.groupId}/${dep.bsn.org.eclipse.smarthome.transform.xslt.artifactId}/${dep.bsn.org.eclipse.smarthome.transform.xslt.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.ui.groupId}/${dep.bsn.org.eclipse.smarthome.ui.artifactId}/${dep.bsn.org.eclipse.smarthome.ui.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.ui.classic.groupId}/${dep.bsn.org.eclipse.smarthome.ui.classic.artifactId}/${dep.bsn.org.eclipse.smarthome.ui.classic.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.ui.icon.groupId}/${dep.bsn.org.eclipse.smarthome.ui.icon.artifactId}/${dep.bsn.org.eclipse.smarthome.ui.icon.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.ui.paperui.groupId}/${dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId}/${dep.bsn.org.eclipse.smarthome.ui.paperui.version}</bundle>
+  </feature>
+</features>

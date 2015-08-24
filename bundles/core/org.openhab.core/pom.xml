@@ -46,39 +46,39 @@
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>${dep.bsn.org.eclipse.smarthome.core.groupId}</groupId>
-        <artifactId>${dep.bsn.org.eclipse.smarthome.core.artifactId}</artifactId>
-        <version>${dep.bsn.org.eclipse.smarthome.core.version}</version>
+        <groupId>org.eclipse.smarthome.core</groupId>
+        <artifactId>org.eclipse.smarthome.core</artifactId>
+        <version>${esh.version}</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>${dep.bsn.org.eclipse.smarthome.core.thing.groupId}</groupId>
-        <artifactId>${dep.bsn.org.eclipse.smarthome.core.thing.artifactId}</artifactId>
-        <version>${dep.bsn.org.eclipse.smarthome.core.thing.version}</version>
+        <groupId>org.eclipse.smarthome.core</groupId>
+        <artifactId>org.eclipse.smarthome.core.thing</artifactId>
+        <version>${esh.version}</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>${dep.bsn.org.eclipse.smarthome.config.core.groupId}</groupId>
-        <artifactId>${dep.bsn.org.eclipse.smarthome.config.core.artifactId}</artifactId>
-        <version>${dep.bsn.org.eclipse.smarthome.config.core.version}</version>
+        <groupId>org.eclipse.smarthome.config</groupId>
+        <artifactId>org.eclipse.smarthome.config.core</artifactId>
+        <version>${esh.version}</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>${dep.bsn.org.eclipse.smarthome.config.discovery.groupId}</groupId>
-        <artifactId>${dep.bsn.org.eclipse.smarthome.config.discovery.artifactId}</artifactId>
-        <version>${dep.bsn.org.eclipse.smarthome.config.discovery.version}</version>
+        <groupId>org.eclipse.smarthome.config</groupId>
+        <artifactId>org.eclipse.smarthome.config.discovery</artifactId>
+        <version>${esh.version}</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>${dep.bsn.org.eclipse.smarthome.model.sitemap.groupId}</groupId>
-        <artifactId>${dep.bsn.org.eclipse.smarthome.model.sitemap.artifactId}</artifactId>
-        <version>${dep.bsn.org.eclipse.smarthome.model.sitemap.version}</version>
+        <groupId>org.eclipse.smarthome.model</groupId>
+        <artifactId>org.eclipse.smarthome.model.sitemap</artifactId>
+        <version>${esh.version}</version>
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>${dep.bsn.org.eclipse.smarthome.model.rule.runtime.groupId}</groupId>
-        <artifactId>${dep.bsn.org.eclipse.smarthome.model.rule.runtime.artifactId}</artifactId>
-        <version>${dep.bsn.org.eclipse.smarthome.model.rule.runtime.version}</version>
+        <groupId>org.eclipse.smarthome.model</groupId>
+        <artifactId>org.eclipse.smarthome.model.rule.runtime</artifactId>
+        <version>${esh.version}</version>
         <scope>provided</scope>
     </dependency>
     <dependency>

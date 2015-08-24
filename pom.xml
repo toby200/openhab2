@@ -351,7 +351,6 @@
     <modules>
         <module>addons</module>
         <module>bundles</module>
-        <!-- <module>features</module> -->
         <module>karaf_features</module>
         <module>targetplatform</module>
         <!-- <module>distribution</module> -->

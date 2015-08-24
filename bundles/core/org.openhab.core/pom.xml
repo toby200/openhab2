@@ -1,23 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
+    <parent>
+        <groupId>org.openhab</groupId>
+        <artifactId>pom-mbp</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../../../poms/mbp/pom.xml</relativePath>
+    </parent>
+
+    <properties>
+        <bundle.symbolicName>org.openhab.core</bundle.symbolicName>
+        <bundle.namespace>org.openhab.core</bundle.namespace>
+    </properties>
+
     <groupId>org.openhab.bundles.core</groupId>
-    <artifactId>pom</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
-  </parent>
+    <artifactId>org.openhab.core</artifactId>
+    <packaging>bundle</packaging>
 
-  <properties>
-    <bundle.symbolicName>org.openhab.core</bundle.symbolicName>
-    <bundle.namespace>org.openhab.core</bundle.namespace>
-  </properties>
+    <name>openHAB Core</name>
 
-  <groupId>org.openhab.bundles.core</groupId>
-  <artifactId>org.openhab.core</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.smarthome.core</groupId>
+            <artifactId>org.eclipse.smarthome.core</artifactId>
+            <version>${esh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.core</groupId>
+            <artifactId>org.eclipse.smarthome.core.thing</artifactId>
+            <version>${esh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.config</groupId>
+            <artifactId>org.eclipse.smarthome.config.core</artifactId>
+            <version>${esh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.config</groupId>
+            <artifactId>org.eclipse.smarthome.config.discovery</artifactId>
+            <version>${esh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.model</groupId>
+            <artifactId>org.eclipse.smarthome.model.sitemap</artifactId>
+            <version>${esh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.smarthome.model</groupId>
+            <artifactId>org.eclipse.smarthome.model.rule.runtime</artifactId>
+            <version>${esh.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${dep.javax.servlet.api.groupId}</groupId>
+            <artifactId>${dep.javax.servlet.api.artifactId}</artifactId>
+            <version>${dep.javax.servlet.api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${dep.bsn.org.eclipse.emf.ecore.groupId}</groupId>
+            <artifactId>${dep.bsn.org.eclipse.emf.ecore.artifactId}</artifactId>
+            <version>${dep.bsn.org.eclipse.emf.ecore.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${dep.bsn.org.eclipse.emf.common.groupId}</groupId>
+            <artifactId>${dep.bsn.org.eclipse.emf.common.artifactId}</artifactId>
+            <version>${dep.bsn.org.eclipse.emf.common.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>${dep.bsn.org.apache.commons.lang.groupId}</groupId>
+            <artifactId>${dep.bsn.org.apache.commons.lang.artifactId}</artifactId>
+            <version>${dep.bsn.org.apache.commons.lang.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-  <name>openHAB Core</name>
-  <packaging>eclipse-plugin</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <instructions>
+                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+                        <Bundle-Activator>org.openhab.core.internal.CoreActivator</Bundle-Activator>
+                        <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+                    </instructions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

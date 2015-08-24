@@ -116,7 +116,7 @@
         <configuration>
           <instructions>
             <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
-            <Bundle-Activator> org.openhab.core.internal.CoreActivator</Bundle-Activator>
+            <Bundle-Activator>org.openhab.core.internal.CoreActivator</Bundle-Activator>
             <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
           </instructions>
         </configuration>

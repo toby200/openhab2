@@ -11,6 +11,10 @@ package org.openhab.core.internal.icon;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
 
 import org.osgi.service.http.HttpService;
 import org.slf4j.Logger;
@@ -23,6 +27,7 @@ import org.slf4j.LoggerFactory;
  * @author Kai Kreuzer
  *
  */
+@Component(name = "org.openhab.ui.iconforwarder")
 public class IconForwarder extends HttpServlet {
 
     private static final long serialVersionUID = 5220836868829415723L;
@@ -31,7 +36,11 @@ public class IconForwarder extends HttpServlet {
 
     private static final String IMAGES_ALIAS = "/images";
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.STATIC, bind = "setHttpService", unbind = "unsetHttpService")
+    private HttpService httpService;
+
     protected void setHttpService(HttpService httpService) {
+        this.httpService = httpService;
         try {
             httpService.registerServlet(IMAGES_ALIAS, this, null, httpService.createDefaultHttpContext());
         } catch (Exception e) {
@@ -41,6 +50,7 @@ public class IconForwarder extends HttpServlet {
 
     protected void unsetHttpService(HttpService httpService) {
         httpService.unregister(IMAGES_ALIAS);
+        this.httpService = null;
     }
 
     @Override

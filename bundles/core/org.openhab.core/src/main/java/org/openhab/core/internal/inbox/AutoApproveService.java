@@ -10,6 +10,13 @@ package org.openhab.core.internal.inbox;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.felix.scr.annotations.Activate;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.ConfigurationPolicy;
+import org.apache.felix.scr.annotations.Modified;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
 
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
@@ -30,19 +37,24 @@ import org.slf4j.LoggerFactory;
  * @author Kai Kreuzer
  *
  */
+@Component(name = "org.openhab.autoapprove", immediate = true, policy = ConfigurationPolicy.REQUIRE)
 public class AutoApproveService implements InboxListener {
 
     final static private Logger logger = LoggerFactory.getLogger(AutoApproveService.class);
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.STATIC, bind = "setThingSetupManager", unbind = "unsetThingSetupManager")
     private ThingSetupManager thingSetupManager;
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.STATIC, bind = "setInbox", unbind = "unsetInbox")
     private Inbox inbox;
 
+    @Activate
     protected void activate(Map<String, Object> configProps) throws ConfigurationException {
         String enabled = (String) configProps.get("enabled");
         enable(enabled);
     }
 
+    @Modified
     protected void modified(Map<String, Object> configProps) throws ConfigurationException {
         String enabled = (String) configProps.get("enabled");
         enable(enabled);

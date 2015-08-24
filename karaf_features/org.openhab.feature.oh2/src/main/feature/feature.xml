@@ -2,13 +2,13 @@
 <features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
   <feature name="${project.artifactId}" description="${project.name}" version="${project.version}">
     <details>${project.description}</details>
-    <bundle start-level="55">mvn:${dep.bsn.org.openhab.core.groupId}/${dep.bsn.org.openhab.core.artifactId}/${dep.bsn.org.openhab.core.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.core.compat1x.groupId}/${dep.bsn.org.openhab.core.compat1x.artifactId}/${dep.bsn.org.openhab.core.compat1x.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.io.jetty.groupId}/${dep.bsn.org.openhab.io.jetty.artifactId}/${dep.bsn.org.openhab.io.jetty.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.io.rest.docs.groupId}/${dep.bsn.org.openhab.io.rest.docs.artifactId}/${dep.bsn.org.openhab.io.rest.docs.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.io.transport.serial.groupId}/${dep.bsn.org.openhab.io.transport.serial.artifactId}/${dep.bsn.org.openhab.io.transport.serial.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.ui.classicui.groupId}/${dep.bsn.org.openhab.ui.classicui.artifactId}/${dep.bsn.org.openhab.ui.classicui.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.ui.dashboard.groupId}/${dep.bsn.org.openhab.ui.dashboard.artifactId}/${dep.bsn.org.openhab.ui.dashboard.version}</bundle>
-    <bundle start-level="54">mvn:${dep.bsn.org.openhab.ui.paperui.groupId}/${dep.bsn.org.openhab.ui.paperui.artifactId}/${dep.bsn.org.openhab.ui.paperui.version}</bundle>
+    <bundle start-level="55">mvn:org.openhab.bundles.core/org.openhab.core/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.core/org.openhab.core.compat1x/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.jetty/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.rest.docs/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.transport.serial/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.ui/org.openhab.ui.dashboard/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.ui/org.openhab.ui.classicui/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.ui/org.openhab.ui.paperui/${project.version}</bundle>
   </feature>
 </features>

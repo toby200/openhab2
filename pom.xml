@@ -230,7 +230,7 @@
         <dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>org.eclipse.smarthome.ui.paperui</dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>
         <dep.bsn.org.eclipse.smarthome.ui.paperui.version>0.8.0.201508200717</dep.bsn.org.eclipse.smarthome.ui.paperui.version>
 
-        <!-- openHAB 2 distribution -->
+        <!-- openHAB 2 distribution: TP -->
         <dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>ked</dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>
         <dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId>com.eclipsesource.jaxrs.jersey-min</dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId>
         <dep.bsn.com.eclipsesource.jaxrs.jersey-min.version>2.18</dep.bsn.com.eclipsesource.jaxrs.jersey-min.version>
@@ -492,32 +492,6 @@
         <dep.bsn.org.objectweb.asm.groupId>ked</dep.bsn.org.objectweb.asm.groupId>
         <dep.bsn.org.objectweb.asm.artifactId>org.objectweb.asm</dep.bsn.org.objectweb.asm.artifactId>
         <dep.bsn.org.objectweb.asm.version>5.0.1.v201404251740</dep.bsn.org.objectweb.asm.version>
-
-        <!-- TODO: convert to maven-bundle-plugin -->
-        <dep.bsn.org.openhab.core.groupId>ked</dep.bsn.org.openhab.core.groupId>
-        <dep.bsn.org.openhab.core.artifactId>org.openhab.core</dep.bsn.org.openhab.core.artifactId>
-        <dep.bsn.org.openhab.core.version>2.0.0.201508231327</dep.bsn.org.openhab.core.version>
-        <dep.bsn.org.openhab.core.compat1x.groupId>ked</dep.bsn.org.openhab.core.compat1x.groupId>
-        <dep.bsn.org.openhab.core.compat1x.artifactId>org.openhab.core.compat1x</dep.bsn.org.openhab.core.compat1x.artifactId>
-        <dep.bsn.org.openhab.core.compat1x.version>2.0.0.201508231327</dep.bsn.org.openhab.core.compat1x.version>
-        <dep.bsn.org.openhab.io.jetty.groupId>ked</dep.bsn.org.openhab.io.jetty.groupId>
-        <dep.bsn.org.openhab.io.jetty.artifactId>org.openhab.io.jetty</dep.bsn.org.openhab.io.jetty.artifactId>
-        <dep.bsn.org.openhab.io.jetty.version>2.0.0.201508231327</dep.bsn.org.openhab.io.jetty.version>
-        <dep.bsn.org.openhab.io.rest.docs.groupId>ked</dep.bsn.org.openhab.io.rest.docs.groupId>
-        <dep.bsn.org.openhab.io.rest.docs.artifactId>org.openhab.io.rest.docs</dep.bsn.org.openhab.io.rest.docs.artifactId>
-        <dep.bsn.org.openhab.io.rest.docs.version>2.0.0.201508231327</dep.bsn.org.openhab.io.rest.docs.version>
-        <dep.bsn.org.openhab.io.transport.serial.groupId>ked</dep.bsn.org.openhab.io.transport.serial.groupId>
-        <dep.bsn.org.openhab.io.transport.serial.artifactId>org.openhab.io.transport.serial</dep.bsn.org.openhab.io.transport.serial.artifactId>
-        <dep.bsn.org.openhab.io.transport.serial.version>2.0.0.201508231327</dep.bsn.org.openhab.io.transport.serial.version>
-        <dep.bsn.org.openhab.ui.classicui.groupId>ked</dep.bsn.org.openhab.ui.classicui.groupId>
-        <dep.bsn.org.openhab.ui.classicui.artifactId>org.openhab.ui.classicui</dep.bsn.org.openhab.ui.classicui.artifactId>
-        <dep.bsn.org.openhab.ui.classicui.version>2.0.0.201508231327</dep.bsn.org.openhab.ui.classicui.version>
-        <dep.bsn.org.openhab.ui.dashboard.groupId>ked</dep.bsn.org.openhab.ui.dashboard.groupId>
-        <dep.bsn.org.openhab.ui.dashboard.artifactId>org.openhab.ui.dashboard</dep.bsn.org.openhab.ui.dashboard.artifactId>
-        <dep.bsn.org.openhab.ui.dashboard.version>2.0.0.201508231327</dep.bsn.org.openhab.ui.dashboard.version>
-        <dep.bsn.org.openhab.ui.paperui.groupId>ked</dep.bsn.org.openhab.ui.paperui.groupId>
-        <dep.bsn.org.openhab.ui.paperui.artifactId>org.openhab.ui.paperui</dep.bsn.org.openhab.ui.paperui.artifactId>
-        <dep.bsn.org.openhab.ui.paperui.version>2.0.0.201508231327</dep.bsn.org.openhab.ui.paperui.version>
     </properties>
     
     <packaging>pom</packaging>

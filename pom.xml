@@ -353,7 +353,7 @@
         <module>bundles</module>
         <module>karaf_features</module>
         <module>targetplatform</module>
-        <!-- <module>distribution</module> -->
+        <module>distribution</module>
         <module>karaf_distribution</module>
     </modules>
         

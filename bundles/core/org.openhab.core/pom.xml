@@ -34,6 +34,7 @@
         <scope>provided</scope>
     </dependency>
     <dependency>
+        <!-- use annotations -->
         <groupId>${dep.osgi.annotations.groupId}</groupId>
         <artifactId>${dep.osgi.annotations.artifactId}</artifactId>
         <version>${dep.osgi.annotations.version}</version>
@@ -117,19 +118,6 @@
             <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
             <Bundle-Activator> org.openhab.core.internal.CoreActivator</Bundle-Activator>
             <Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
-<!--
-TODO: License, name, description, ...
-
-There is still some stuff that we should set using the pom properties.
-See mapping here:
-
-<Bundle-Version> is assumed to be "${pom.version}" but is normalized to the OSGi version format of "MAJOR.MINOR.MICRO.QUALIFIER", for example "2.1-SNAPSHOT" would become "2.1.0.SNAPSHOT".
-<Bundle-Name> is assumed to be "${pom.name}".
-<Bundle-Description> is assumed to be "${pom.description}".
-<Bundle-License> is assumed to be "${pom.licenses}".
-<Bundle-Vendor> is assumed to be "${pom.organization.name}".
-<Bundle-DocURL> is assumed to be "${pom.organization.url}".
--->
           </instructions>
         </configuration>
       </plugin>

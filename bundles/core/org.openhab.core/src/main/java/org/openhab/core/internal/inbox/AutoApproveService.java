@@ -18,6 +18,13 @@ import org.eclipse.smarthome.config.discovery.inbox.Inbox;
 import org.eclipse.smarthome.config.discovery.inbox.InboxListener;
 import org.eclipse.smarthome.core.thing.setup.ThingSetupManager;
 import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,8 +35,9 @@ import org.slf4j.LoggerFactory;
  * activated through a configuration, which is provided in services.cfg.
  *
  * @author Kai Kreuzer
- *
+ * @author Markus Rathgeb - using OSGi annotations
  */
+@Component(name = "org.openhab.autoapprove", immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class AutoApproveService implements InboxListener {
 
     final static private Logger logger = LoggerFactory.getLogger(AutoApproveService.class);
@@ -38,11 +46,13 @@ public class AutoApproveService implements InboxListener {
 
     private Inbox inbox;
 
+    @Activate
     protected void activate(Map<String, Object> configProps) throws ConfigurationException {
         String enabled = (String) configProps.get("enabled");
         enable(enabled);
     }
 
+    @Modified
     protected void modified(Map<String, Object> configProps) throws ConfigurationException {
         String enabled = (String) configProps.get("enabled");
         enable(enabled);
@@ -79,6 +89,7 @@ public class AutoApproveService implements InboxListener {
     public void thingRemoved(Inbox source, DiscoveryResult result) {
     }
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.STATIC, unbind = "unsetInbox")
     protected void setInbox(Inbox inbox) {
         this.inbox = inbox;
     }
@@ -88,6 +99,7 @@ public class AutoApproveService implements InboxListener {
         this.inbox = null;
     }
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.STATIC, unbind = "unsetThingSetupManager")
     protected void setThingSetupManager(ThingSetupManager thingSetupManager) {
         this.thingSetupManager = thingSetupManager;
     }

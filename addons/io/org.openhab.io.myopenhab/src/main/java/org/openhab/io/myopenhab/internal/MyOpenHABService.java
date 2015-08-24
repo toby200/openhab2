@@ -22,6 +22,14 @@ import java.util.Set;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.felix.scr.annotations.Activate;
+import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.ConfigurationPolicy;
+import org.apache.felix.scr.annotations.Deactivate;
+import org.apache.felix.scr.annotations.Reference;
+import org.apache.felix.scr.annotations.ReferenceCardinality;
+import org.apache.felix.scr.annotations.ReferencePolicy;
+import org.apache.felix.scr.annotations.Service;
 import org.eclipse.smarthome.config.core.ConfigConstants;
 import org.eclipse.smarthome.core.events.Event;
 import org.eclipse.smarthome.core.events.EventFilter;
@@ -55,7 +63,8 @@ import org.slf4j.LoggerFactory;
  * @author Victor Belov - Initial contribution
  * @author Kai Kreuzer - migrated code to new Jetty client and ESH APIs
  */
-
+@Component(policy = ConfigurationPolicy.OPTIONAL, immediate = true, name = "org.openhab.myopenhab")
+@Service(value = {PersistenceService.class , ActionService.class, EventSubscriber.class})
 public class MyOpenHABService implements PersistenceService, ActionService, MyOpenHABClientListener, EventSubscriber {
 
     private Logger logger = LoggerFactory.getLogger(MyOpenHABService.class);
@@ -65,7 +74,11 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
     public static String myohVersion = null;
     private MyOpenHABClient myOHClient;
     private boolean persistenceEnabled = false;
+    
+    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.DYNAMIC, bind="setItemRegistry", unbind="unsetItemRegistry")
     protected ItemRegistry itemRegistry = null;
+
+    @Reference(cardinality = ReferenceCardinality.OPTIONAL_UNARY, policy = ReferencePolicy.DYNAMIC, bind="setEventPublisher", unbind="unsetEventPublisher")
     protected EventPublisher eventPublisher = null;
 
     public MyOpenHABService() {}
@@ -94,12 +107,14 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
         myOHClient.sendSMS(phone, message);
     }
 
+    @Activate
     protected void activate(BundleContext context, Map<String, ?> config) {
         myohVersion = StringUtils.substringBefore(context.getBundle().getVersion().toString(), ".qualifier");
         logger.debug("my.openHAB service activated");
         modified(config);
     }
 
+    @Deactivate
     protected void deactivate() {
         logger.debug("my.openHAB service deactivated");
         myOHClient.shutdown();

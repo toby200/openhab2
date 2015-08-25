@@ -9,11 +9,11 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>distribution-extras</artifactId>
+    <artifactId>openhab2-addons</artifactId>
 
     <packaging>pom</packaging>
 
-    <name>openHAB Distribution Addons and Demo</name>
+    <name>openHAB Distribution Addons</name>
 
     <properties>
         <esh.version>0.8.0-SNAPSHOT</esh.version>
@@ -35,7 +35,6 @@
                         <configuration>
                             <descriptors>
                                 <descriptor>src/assemble/addons.xml</descriptor>
-                                <descriptor>src/assemble/demo.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>

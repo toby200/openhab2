@@ -8,8 +8,8 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.openhab</groupId>
-  <artifactId>karaf-features</artifactId>
+  <groupId>org.openhab.features</groupId>
+  <artifactId>pom</artifactId>
 
   <name>openHAB Features</name>
 

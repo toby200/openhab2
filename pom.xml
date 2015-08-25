@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <prerequisites>
         <maven>3.0</maven>
     </prerequisites>
-    
+
     <groupId>org.openhab</groupId>
     <artifactId>pom</artifactId>
     <version>2.0.0-SNAPSHOT</version>
     <name>openHAB</name>
-    
+
     <organization>
         <name>openHAB.org</name>
         <url>http://www.openhab.org</url>
     </organization>
-    
+
     <licenses>
         <license>
             <name>Eclipse Public License</name>
             <url>http://www.eclipse.org/legal/epl-v10.html</url>
         </license>
     </licenses>
-    
+
     <scm>
         <connection>scm:git:https://github.com/openhab/openhab2.git</connection>
         <developerConnection>scm:git:https://github.com/openhab/openhab2.git</developerConnection>
         <url>https://github.com/openhab/openhab2</url>
     </scm>
-        
+
     <issueManagement>
         <url>https://github.com/openhab/openhab2/issues</url>
         <system>Github</system>
     </issueManagement>
-    
+
     <description>This is the open Home Automation Bus (openHAB)</description>
-    
+
     <properties>
         <esh.version>0.8.0-SNAPSHOT</esh.version>
         <tycho-version>0.22.0</tycho-version>
@@ -345,18 +345,17 @@
         <dep.bsn.org.objectweb.asm.artifactId>org.objectweb.asm</dep.bsn.org.objectweb.asm.artifactId>
         <dep.bsn.org.objectweb.asm.version>5.0.1.v201404251740</dep.bsn.org.objectweb.asm.version>
     </properties>
-    
+
     <packaging>pom</packaging>
-    
+
     <modules>
         <module>addons</module>
         <module>bundles</module>
-        <module>karaf_features</module>
+        <module>features</module>
         <module>targetplatform</module>
-        <module>distribution</module>
-        <module>karaf_distribution</module>
+        <module>distributions</module>
     </modules>
-        
+
     <!-- dependencies, which are not available in a p2-repository -->
     <!-- TODO: remove this! -->
     <dependencies>
@@ -367,7 +366,7 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    
+
 
     <build>
         <plugins>
@@ -426,7 +425,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -517,7 +516,7 @@
             </plugins>
         </pluginManagement>
     </build>
-    
+
     <profiles>
         <profile>
             <id>prepare-release</id>
@@ -540,7 +539,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>deploy</id>
             <distributionManagement>
@@ -572,7 +571,7 @@
                 </plugins>
             </build>
         </profile>
-        
+
         <profile>
             <id>prepare-next-snapshot</id>
             <build>
@@ -615,5 +614,5 @@
         <url>https://github.com/maggu2810/openhab2-mvn-repo/raw/master/</url>
     </repository>
 	</repositories>
-    
+
 </project>

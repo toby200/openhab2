@@ -29,7 +29,7 @@
     <artifactId>org.openhab.feature.esh</artifactId>
     <packaging>kar</packaging>
 
-    <name>openHAB2-feature-esh</name>
+    <name>openHAB Feature ESH</name>
     <description>Eclipse SmartHome part of openHAB 2</description>
 
     <dependencies>

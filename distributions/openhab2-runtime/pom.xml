@@ -11,7 +11,7 @@
     <artifactId>openhab2-runtime</artifactId>
     <packaging>karaf-assembly</packaging>
 
-    <name>openHAB Distribution - runtime</name>
+    <name>openHAB Distribution Runtime</name>
     <description>This is the core runtime of openHAB2</description>
 
     <repositories>

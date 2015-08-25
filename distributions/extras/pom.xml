@@ -13,7 +13,7 @@
 
     <packaging>pom</packaging>
 
-    <name>openHAB Distribution - addons, demo</name>
+    <name>openHAB Distribution Addons and Demo</name>
 
     <properties>
         <esh.version>0.8.0-SNAPSHOT</esh.version>

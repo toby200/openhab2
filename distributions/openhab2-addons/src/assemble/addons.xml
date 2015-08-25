@@ -10,7 +10,7 @@
   <fileSets>
     <fileSet>
       <outputDirectory>/</outputDirectory>
-      <directory>src/assemble/resources/addons</directory>
+      <directory>src/assemble/resources</directory>
 	  <useDefaultExcludes>false</useDefaultExcludes>
     </fileSet>
   </fileSets>

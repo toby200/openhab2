@@ -16,8 +16,8 @@
     <name>openHAB Distribution</name>
 
     <properties>
-		<esh.version>0.8.0-SNAPSHOT</esh.version>
-		<oh1.version>1.8.0-SNAPSHOT</oh1.version>
+        <esh.version>0.8.0-SNAPSHOT</esh.version>
+        <oh1.version>1.8.0-SNAPSHOT</oh1.version>
     </properties>
 
     <build>
@@ -34,7 +34,6 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>src/assemble/runtime.xml</descriptor>
                                 <descriptor>src/assemble/addons.xml</descriptor>
                                 <descriptor>src/assemble/demo.xml</descriptor>
                             </descriptors>
@@ -42,7 +41,7 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>        
+        </plugins>
     </build>
 
     <dependencies>
@@ -140,7 +139,7 @@
             <groupId>org.openhab.addons.io</groupId>
             <artifactId>org.openhab.io.myopenhab</artifactId>
             <version>${project.version}</version>
-        </dependency>    	
+        </dependency>
 
         <dependency>
             <groupId>org.eclipse.smarthome.binding</groupId>
@@ -303,12 +302,12 @@
             <groupId>org.openhab.binding</groupId>
             <artifactId>org.openhab.binding.weather</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.binding</groupId>
             <artifactId>org.openhab.binding.zwave</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.binding</groupId>
             <artifactId>org.openhab.binding.tellstick</artifactId>
@@ -324,49 +323,49 @@
             <groupId>org.openhab.persistence</groupId>
             <artifactId>org.openhab.persistence.rrd4j</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.persistence</groupId>
             <artifactId>org.openhab.persistence.mysql</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.persistence</groupId>
             <artifactId>org.openhab.persistence.logging</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.persistence</groupId>
             <artifactId>org.openhab.persistence.jpa</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
 
         <dependency>
             <groupId>org.openhab.action</groupId>
             <artifactId>org.openhab.action.mail</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.action</groupId>
             <artifactId>org.openhab.action.pushover</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.action</groupId>
             <artifactId>org.openhab.action.xbmc</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
         <dependency>
             <groupId>org.openhab.action</groupId>
             <artifactId>org.openhab.action.xmpp</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
 
         <dependency>
             <groupId>org.openhab.io</groupId>
             <artifactId>org.openhab.io.multimedia.tts.marytts</artifactId>
             <version>${oh1.version}</version>
-        </dependency>    	
+        </dependency>
     </dependencies>
 
     <repositories>

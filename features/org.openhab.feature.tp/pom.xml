@@ -29,7 +29,7 @@
     <artifactId>org.openhab.feature.tp</artifactId>
     <packaging>kar</packaging>
 
-    <name>openHAB2-feature-tp</name>
+    <name>openHAB Feature TP</name>
     <description>Targetplatform for openHAB 2</description>
 
     <dependencies>

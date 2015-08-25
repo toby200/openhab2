@@ -8,11 +8,11 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>openhab2-standard</artifactId>
+    <artifactId>openhab2-runtime</artifactId>
     <packaging>karaf-assembly</packaging>
 
     <name>openHAB2</name>
-    <description>openHAB2 distribution with the standard package set</description>
+    <description>This is the core runtime of openHAB2</description>
 
     <repositories>
         <!-- Apache ServiceMix repository (for region) -->

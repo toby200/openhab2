@@ -12,7 +12,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>openhab2-standard</module>
+    <module>openhab2-runtime</module>
   </modules>
 
 </project> 

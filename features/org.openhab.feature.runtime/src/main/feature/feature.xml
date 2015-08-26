@@ -1,7 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.0.0">
-  <feature name="${project.artifactId}" description="${project.name}" version="${project.version}">
+
+  <!-- <feature name="${project.artifactId}" description="${project.name}" version="${project.version}"> -->
+  <feature name="openhab2-runtime" description="${project.name}" version="${project.version}">
     <details>${project.description}</details>
+    <feature>openhab2-runtime-split-tp</feature>
+    <feature>openhab2-runtime-split-esh</feature>
+    <feature>openhab2-runtime-split-oh2</feature>
+  </feature>
+
+  <feature name="openhab2-runtime-split-oh2" description="openHAB2 Runtime (OH2)" version="${project.version}">
+    <details>openHAB2 Runtime (OH2 specific part)</details>
+    <bundle start-level="55">mvn:org.openhab.bundles.core/org.openhab.core/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.core/org.openhab.core.compat1x/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.jetty/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.rest.docs/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.transport.serial/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.bundles.ui/org.openhab.ui.dashboard/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.ui/org.openhab.ui.classicui/${project.version}</bundle>
+    <bundle start-level="54">mvn:org.openhab.ui/org.openhab.ui.paperui/${project.version}</bundle>
+  </feature>
+
+  <feature name="openhab2-runtime-split-esh" description="openHAB2 Runtime (ESH)" version="${project.version}">
+    <details>openHAB2 Runtime (ESH specific part)</details>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.config/org.eclipse.smarthome.config.core/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.config/org.eclipse.smarthome.config.discovery/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.config/org.eclipse.smarthome.config.dispatch/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.config/org.eclipse.smarthome.config.xml/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.autoupdate/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.binding.xml/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.id/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.persistence/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.scheduler/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.scriptengine/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.thing/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.thing.xml/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.transform/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.console/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.console.eclipse/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.monitor/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.multimedia/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.net/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.core/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.sitemap/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.sse/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mdns/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mqtt/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.upnp/${esh.version}</bundle>
+    <bundle start-level="55">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.core/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.item/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.item.runtime/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.persistence/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.persistence.runtime/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.rule/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.rule.runtime/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.script/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.script.runtime/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.sitemap/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.sitemap.runtime/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.thing/${esh.version}</bundle>
+    <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.thing.runtime/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.storage/org.eclipse.smarthome.storage.mapdb/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.transform/org.eclipse.smarthome.transform.exec/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.transform/org.eclipse.smarthome.transform.javascript/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.transform/org.eclipse.smarthome.transform.map/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.transform/org.eclipse.smarthome.transform.regex/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.transform/org.eclipse.smarthome.transform.xpath/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.transform/org.eclipse.smarthome.transform.xslt/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome/org.eclipse.smarthome.ui/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome.ui/org.eclipse.smarthome.ui.classic/${esh.version}</bundle>
+    <bundle start-level="54">mvn:org.eclipse.smarthome/org.eclipse.smarthome.ui.icon/${esh.version}</bundle>
+    <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.ui.paperui.groupId}/${dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId}/${dep.bsn.org.eclipse.smarthome.ui.paperui.version}</bundle>
+  </feature>
+
+  <feature name="openhab2-runtime-split-tp" description="openHAB2 Runtime (TP)" version="${project.version}">
+    <details>openHAB2 Runtime (non-ESH and non-OH2 specific part)</details>
     <bundle start-level="54">mvn:${dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId}/${dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.jersey-min.version}</bundle>
     <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.version}</bundle>
     <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.publisher.groupId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.version}</bundle>
@@ -90,4 +165,5 @@
     <bundle start-level="54">mvn:${dep.bsn.org.jupnp.groupId}/${dep.bsn.org.jupnp.artifactId}/${dep.bsn.org.jupnp.version}</bundle>
     <bundle start-level="54">mvn:${dep.bsn.org.objectweb.asm.groupId}/${dep.bsn.org.objectweb.asm.artifactId}/${dep.bsn.org.objectweb.asm.version}</bundle>
   </feature>
+
 </features>

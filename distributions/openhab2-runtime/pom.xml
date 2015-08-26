@@ -94,23 +94,7 @@
         </dependency>
         <dependency>
             <groupId>org.openhab.features</groupId>
-            <artifactId>org.openhab.feature.tp</artifactId>
-            <version>${project.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openhab.features</groupId>
-            <artifactId>org.openhab.feature.esh</artifactId>
-            <version>${project.version}</version>
-            <classifier>features</classifier>
-            <type>xml</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openhab.features</groupId>
-            <artifactId>org.openhab.feature.oh2</artifactId>
+            <artifactId>org.openhab.feature.runtime</artifactId>
             <version>${project.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
@@ -182,9 +166,7 @@
                         <feature>service</feature>
                         <feature>system</feature>
                         <!-- <feature>webconsole</feature> -->
-                        <feature>org.openhab.feature.tp</feature>
-                        <feature>org.openhab.feature.esh</feature>
-                        <feature>org.openhab.feature.oh2</feature>
+                        <feature>openhab2-runtime</feature>
                     </bootFeatures>
                 </configuration>
             </plugin>

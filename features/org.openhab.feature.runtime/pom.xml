@@ -26,11 +26,11 @@
       <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>org.openhab.feature.tp</artifactId>
+    <artifactId>org.openhab.feature.runtime</artifactId>
     <packaging>kar</packaging>
 
-    <name>openHAB Feature TP</name>
-    <description>Targetplatform for openHAB 2</description>
+    <name>openHAB Feature Runtime</name>
+    <description>openHAB 2</description>
 
     <dependencies>
         <!-- add the artifacts that should be in the kar in the dependencies set -->

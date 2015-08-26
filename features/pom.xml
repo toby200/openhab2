@@ -16,9 +16,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>org.openhab.feature.tp</module>
-    <module>org.openhab.feature.esh</module>
-    <module>org.openhab.feature.oh2</module>
+    <module>org.openhab.feature.runtime</module>
   </modules>
 
 </project>

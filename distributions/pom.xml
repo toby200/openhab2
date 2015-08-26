@@ -17,7 +17,6 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>openhab2-addons</module>
     <module>openhab2-demo</module>
     <module>openhab2-runtime</module>
   </modules>

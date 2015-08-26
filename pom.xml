@@ -53,6 +53,7 @@
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <!-- TODO: do not use 2.5.4 (https://issues.apache.org/jira/browse/FELIX-4874); wait for 2.5.5 -->
         <maven.bundle.plugin.version>2.5.3</maven.bundle.plugin.version>
+        <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
 
         <!-- added for OSGi in general -->
         <dep.osgi.org.osgi.core.groupId>org.osgi</dep.osgi.org.osgi.core.groupId>
@@ -462,6 +463,11 @@
                           </goals>
                       </execution>
                   </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build.helper.maven.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>${tycho-groupid}</groupId>

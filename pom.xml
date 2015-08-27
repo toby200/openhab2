@@ -50,12 +50,7 @@
         <karaf.features.version>4.0.1</karaf.features.version>
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
-
-        <!-- provided by Karaf -->
-        <!-- TODO: Use dependency management to set slf4j to provided scope (and version) for all childs -->
-        <dep.bsn.org.slf4j.groupId>org.slf4j</dep.bsn.org.slf4j.groupId>
-        <dep.bsn.org.slf4j.artifactId>slf4j-api</dep.bsn.org.slf4j.artifactId>
-        <dep.bsn.org.slf4j.version>1.7.7</dep.bsn.org.slf4j.version>
+        <license.maven.plugin.version>2.10</license.maven.plugin.version>
 
         <!-- openHAB 2 distribution: ESH -->
         <dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>tmp.need.a.home</dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>
@@ -337,7 +332,6 @@
 
 
     <build>
-
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -347,13 +341,13 @@
                     <extensions>true</extensions>
                 </plugin>
                 <plugin>
-                  <groupId>org.apache.felix</groupId>
-                  <artifactId>maven-compiler-plugin</artifactId>
-                  <version>${maven.compiler.plugin.version}</version>
-                  <configuration>
-                      <source>${maven.compiler.source}</source>
-                      <target>${maven.compiler.target}</target>
-                  </configuration>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -363,7 +357,7 @@
                 <plugin>
                     <groupId>com.mycila</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>2.10</version>
+                    <version>${license.maven.plugin.version}</version>
                     <configuration>
                         <basedir>${basedir}</basedir>
                         <header>src/etc/header.txt</header>
@@ -399,13 +393,13 @@
         </pluginManagement>
     </build>
 
-	<repositories>
-    <repository>
-        <!-- TODO: temporary solution as long there is no maven repo for 3rd party libs -->
-        <id>github-openhab2-mvn-repo</id>
-        <name>Git repo for OH2 3rd party libs</name>
-        <url>https://github.com/maggu2810/openhab2-mvn-repo/raw/master/</url>
-    </repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <!-- TODO: temporary solution as long there is no maven repo for 3rd party libs -->
+            <id>github-openhab2-mvn-repo</id>
+            <name>Git repo for OH2 3rd party libs</name>
+            <url>https://github.com/maggu2810/openhab2-mvn-repo/raw/master/</url>
+        </repository>
+    </repositories>
 
 </project>

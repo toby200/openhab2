@@ -10,13 +10,6 @@ package org.openhab.core.internal.inbox;
 
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.felix.scr.annotations.Activate;
-import org.apache.felix.scr.annotations.Component;
-import org.apache.felix.scr.annotations.ConfigurationPolicy;
-import org.apache.felix.scr.annotations.Modified;
-import org.apache.felix.scr.annotations.Reference;
-import org.apache.felix.scr.annotations.ReferenceCardinality;
-import org.apache.felix.scr.annotations.ReferencePolicy;
 
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
@@ -25,6 +18,13 @@ import org.eclipse.smarthome.config.discovery.inbox.Inbox;
 import org.eclipse.smarthome.config.discovery.inbox.InboxListener;
 import org.eclipse.smarthome.core.thing.setup.ThingSetupManager;
 import org.osgi.service.cm.ConfigurationException;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
+import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,17 +35,15 @@ import org.slf4j.LoggerFactory;
  * activated through a configuration, which is provided in services.cfg.
  *
  * @author Kai Kreuzer
- *
+ * @author Markus Rathgeb - using OSGi annotations
  */
-@Component(name = "org.openhab.autoapprove", immediate = true, policy = ConfigurationPolicy.REQUIRE)
+@Component(name = "org.openhab.autoapprove", immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class AutoApproveService implements InboxListener {
 
     final static private Logger logger = LoggerFactory.getLogger(AutoApproveService.class);
 
-    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.STATIC, bind = "setThingSetupManager", unbind = "unsetThingSetupManager")
     private ThingSetupManager thingSetupManager;
 
-    @Reference(cardinality = ReferenceCardinality.MANDATORY_UNARY, policy = ReferencePolicy.STATIC, bind = "setInbox", unbind = "unsetInbox")
     private Inbox inbox;
 
     @Activate
@@ -91,6 +89,7 @@ public class AutoApproveService implements InboxListener {
     public void thingRemoved(Inbox source, DiscoveryResult result) {
     }
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.STATIC, unbind = "unsetInbox")
     protected void setInbox(Inbox inbox) {
         this.inbox = inbox;
     }
@@ -100,6 +99,7 @@ public class AutoApproveService implements InboxListener {
         this.inbox = null;
     }
 
+    @Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.STATIC, unbind = "unsetThingSetupManager")
     protected void setThingSetupManager(ThingSetupManager thingSetupManager) {
         this.thingSetupManager = thingSetupManager;
     }

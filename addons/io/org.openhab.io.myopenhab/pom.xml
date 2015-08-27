@@ -6,9 +6,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.openhab.addons.io</groupId>
-        <artifactId>pom</artifactId>
+        <groupId>org.openhab</groupId>
+        <artifactId>pom-mbp</artifactId>
         <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../../../poms/mbp/pom.xml</relativePath>
     </parent>
 
     <properties>
@@ -18,37 +19,11 @@
 
     <groupId>org.openhab.addons.io</groupId>
     <artifactId>org.openhab.io.myopenhab</artifactId>
+    <packaging>bundle</packaging>
 
     <name>my.openHAB Connection Service</name>
 
-    <packaging>bundle</packaging>
-
     <dependencies>
-        <dependency>
-            <groupId>${dep.osgi.org.osgi.core.groupId}</groupId>
-            <artifactId>${dep.osgi.org.osgi.core.artifactId}</artifactId>
-            <version>${dep.osgi.org.osgi.core.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>${dep.osgi.org.osgi.compendium.groupId}</groupId>
-            <artifactId>${dep.osgi.org.osgi.compendium.artifactId}</artifactId>
-            <version>${dep.osgi.org.osgi.compendium.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <!-- use annotations -->
-            <groupId>${dep.osgi.annotations.groupId}</groupId>
-            <artifactId>${dep.osgi.annotations.artifactId}</artifactId>
-            <version>${dep.osgi.annotations.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <artifactId>${dep.bsn.org.slf4j.artifactId}</artifactId>
-            <groupId>${dep.bsn.org.slf4j.groupId}</groupId>
-            <version>${dep.bsn.org.slf4j.version}</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>${dep.bsn.org.apache.commons.io.groupId}</groupId>
             <artifactId>${dep.bsn.org.apache.commons.io.artifactId}</artifactId>
@@ -133,28 +108,28 @@
             <version>1.3.0</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/Java-WebSocket-1.3.0.jar</systemPath>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>bundled.lib</groupId>
             <artifactId>engine-io-client</artifactId>
             <version>0.4.2-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/engine.io-client-0.4.2-SNAPSHOT.jar</systemPath>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>bundled.lib</groupId>
             <artifactId>json</artifactId>
             <version>20140107</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/json-20140107.jar</systemPath>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>bundled.lib</groupId>
             <artifactId>socket-io-client</artifactId>
             <version>0.4.3-SNAPSHOT</version>
             <scope>system</scope>
             <systemPath>${basedir}/lib/socket.io-client-0.4.3-SNAPSHOT.jar</systemPath>
-        </dependency>        
+        </dependency>
     </dependencies>
 
     <build>
@@ -168,11 +143,6 @@
                         <Embed-Dependency>*;scope=system</Embed-Dependency>
                     </instructions>
                 </configuration>
-            </plugin>
-            <plugin>
-                <!-- use annotations -->
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-scr-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

@@ -9,7 +9,10 @@
     <groupId>org.openhab</groupId>
     <artifactId>pom</artifactId>
     <version>2.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
     <name>openHAB</name>
+    <description>This is the open Home Automation Bus (openHAB)</description>
 
     <organization>
         <name>openHAB.org</name>
@@ -34,12 +37,8 @@
         <system>Github</system>
     </issueManagement>
 
-    <description>This is the open Home Automation Bus (openHAB)</description>
-
     <properties>
         <esh.version>0.8.0-SNAPSHOT</esh.version>
-        <tycho-version>0.22.0</tycho-version>
-        <tycho-groupid>org.eclipse.tycho</tycho-groupid>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -49,31 +48,11 @@
 
         <karaf.maven.plugin.version>4.0.1</karaf.maven.plugin.version>
         <karaf.features.version>4.0.1</karaf.features.version>
-        <maven.scr.plugin.version>1.15.0</maven.scr.plugin.version>
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
-        <!-- TODO: do not use 2.5.4 (https://issues.apache.org/jira/browse/FELIX-4874); wait for 2.5.5 -->
-        <maven.bundle.plugin.version>2.5.3</maven.bundle.plugin.version>
         <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
 
-        <!-- added for OSGi in general -->
-        <dep.osgi.org.osgi.core.groupId>org.osgi</dep.osgi.org.osgi.core.groupId>
-        <dep.osgi.org.osgi.core.artifactId>org.osgi.core</dep.osgi.org.osgi.core.artifactId>
-        <dep.osgi.org.osgi.core.version>6.0.0</dep.osgi.org.osgi.core.version>
-        <dep.osgi.org.osgi.compendium.groupId>org.osgi</dep.osgi.org.osgi.compendium.groupId>
-        <dep.osgi.org.osgi.compendium.artifactId>org.osgi.compendium</dep.osgi.org.osgi.compendium.artifactId>
-        <dep.osgi.org.osgi.compendium.version>5.0.0</dep.osgi.org.osgi.compendium.version>
-
-        <!-- annotation stuff -->
-        <!-- There are two sets of annotations: -->
-        <!-- the standard annotations as defined in the Declarative Services specification and -->
-        <!-- the annotations defined in the Apache Felix project. -->
-        <!-- Apache Felix annotations: mvn:org.apache.felix/org.apache.felix.scr.annotations -->
-        <!-- standard     annotations: mvn:org.apache.felix/org.apache.felix.scr.ds-annotations -->
-        <dep.osgi.annotations.groupId>org.apache.felix</dep.osgi.annotations.groupId>
-        <dep.osgi.annotations.artifactId>org.apache.felix.scr.annotations</dep.osgi.annotations.artifactId>
-        <dep.osgi.annotations.version>1.9.12</dep.osgi.annotations.version>
-
         <!-- provided by Karaf -->
+        <!-- TODO: Use dependency management to set slf4j to provided scope (and version) for all childs -->
         <dep.bsn.org.slf4j.groupId>org.slf4j</dep.bsn.org.slf4j.groupId>
         <dep.bsn.org.slf4j.artifactId>slf4j-api</dep.bsn.org.slf4j.artifactId>
         <dep.bsn.org.slf4j.version>1.7.7</dep.bsn.org.slf4j.version>
@@ -347,9 +326,8 @@
         <dep.bsn.org.objectweb.asm.version>5.0.1.v201404251740</dep.bsn.org.objectweb.asm.version>
     </properties>
 
-    <packaging>pom</packaging>
-
     <modules>
+        <module>poms</module>
         <module>addons</module>
         <module>bundles</module>
         <module>features</module>
@@ -357,75 +335,8 @@
         <module>distributions</module>
     </modules>
 
-    <!-- dependencies, which are not available in a p2-repository -->
-    <!-- TODO: remove this! -->
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.felix</groupId>
-            <artifactId>org.apache.felix.fileinstall</artifactId>
-            <version>3.4.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>${tycho-groupid}</groupId>
-                <artifactId>tycho-maven-plugin</artifactId>
-                <version>${tycho-version}</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
-                <groupId>${tycho-groupid}</groupId>
-                <artifactId>target-platform-configuration</artifactId>
-                <version>${tycho-version}</version>
-                <configuration>
-                    <resolver>p2</resolver>
-                    <ignoreTychoRepositories>true</ignoreTychoRepositories>
-                    <pomDependencies>consider</pomDependencies>
-                    <target>
-                        <artifact>
-                            <groupId>org.openhab</groupId>
-                            <artifactId>targetplatform</artifactId>
-                            <version>${project.version}</version>
-                            <classifier>openhab</classifier>
-                        </artifact>
-                    </target>
-                    <environments>
-                        <environment>
-                            <os>linux</os>
-                            <ws>gtk</ws>
-                            <arch>x86</arch>
-                        </environment>
-                        <environment>
-                            <os>linux</os>
-                            <ws>gtk</ws>
-                            <arch>x86_64</arch>
-                        </environment>
-                        <environment>
-                            <os>win32</os>
-                            <ws>win32</ws>
-                            <arch>x86</arch>
-                        </environment>
-                        <environment>
-                            <os>macosx</os>
-                            <ws>cocoa</ws>
-                            <arch>x86_64</arch>
-                        </environment>
-                    </environments>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>${tycho-groupid}</groupId>
-                <artifactId>tycho-packaging-plugin</artifactId>
-                <version>${tycho-version}</version>
-                <configuration>
-                    <strictVersions>false</strictVersions>
-                </configuration>
-            </plugin>
-        </plugins>
 
         <pluginManagement>
             <plugins>
@@ -433,12 +344,6 @@
                     <groupId>org.apache.karaf.tooling</groupId>
                     <artifactId>karaf-maven-plugin</artifactId>
                     <version>${karaf.maven.plugin.version}</version>
-                    <extensions>true</extensions>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.felix</groupId>
-                    <artifactId>maven-bundle-plugin</artifactId>
-                    <version>${maven.bundle.plugin.version}</version>
                     <extensions>true</extensions>
                 </plugin>
                 <plugin>
@@ -451,33 +356,9 @@
                   </configuration>
                 </plugin>
                 <plugin>
-                  <!-- this plugin is used to annotation stuff -->
-                  <groupId>org.apache.felix</groupId>
-                  <artifactId>maven-scr-plugin</artifactId>
-                  <version>${maven.scr.plugin.version}</version>
-                  <executions>
-                      <execution>
-                          <id>generate-scr-scrdescriptor</id>
-                          <goals>
-                              <goal>scr</goal>
-                          </goals>
-                      </execution>
-                  </executions>
-                </plugin>
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>${build.helper.maven.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>${tycho-groupid}</groupId>
-                    <artifactId>tycho-compiler-plugin</artifactId>
-                    <version>${tycho-version}</version>
-                    <configuration>
-                        <encoding>UTF-8</encoding>
-                        <source>${maven.compiler.source}</source>
-                        <target>${maven.compiler.target}</target>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>com.mycila</groupId>
@@ -514,105 +395,11 @@
                         </execution>
                     </executions>
                 </plugin>
-                <plugin>
-                    <groupId>${tycho-groupid}</groupId>
-                    <artifactId>tycho-versions-plugin</artifactId>
-                    <version>${tycho-version}</version>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
-    <profiles>
-        <profile>
-            <id>prepare-release</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.eclipse.tycho</groupId>
-                        <artifactId>tycho-versions-plugin</artifactId>
-                        <version>${tycho-version}</version>
-                        <executions>
-                            <execution>
-                                <id>update-version</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>set-version</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>deploy</id>
-            <distributionManagement>
-                <repository>
-                    <id>${repo.id}</id>
-                    <url>${repo.url}/maven</url>
-                    <uniqueVersion>false</uniqueVersion>
-                </repository>
-            </distributionManagement>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>${tycho-groupid}</groupId>
-                        <artifactId>tycho-source-plugin</artifactId>
-                        <version>${tycho-version}</version>
-                        <executions>
-                            <execution>
-                                <id>plugin-source</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>plugin-source</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <sourceBundle>true</sourceBundle>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>prepare-next-snapshot</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.eclipse.tycho</groupId>
-                        <artifactId>tycho-versions-plugin</artifactId>
-                        <version>${tycho-version}</version>
-                        <executions>
-                            <execution>
-                                <id>update-version</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>set-version</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-
 	<repositories>
-		<repository>
-			<id>eclipse</id>
-			<name>Eclipse Snapshot Repository</name>
-			<layout>default</layout>
-			<url>https://repo.eclipse.org/content/repositories/snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-
-
     <repository>
         <!-- TODO: temporary solution as long there is no maven repo for 3rd party libs -->
         <id>github-openhab2-mvn-repo</id>

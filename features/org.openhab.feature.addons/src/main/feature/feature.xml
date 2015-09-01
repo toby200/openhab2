@@ -3,6 +3,11 @@
 
   <!-- <feature name="${project.artifactId}" description="${project.name}" version="${project.version}"> -->
 
+    <feature name="openhab2-addon-paperui" description="" version="${project.version}">
+        <bundle start-level="54">mvn:org.openhab.ui/org.openhab.ui.paperui/${project.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.smarthome.ui.paperui.groupId}/${dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId}/${dep.bsn.org.eclipse.smarthome.ui.paperui.version}</bundle>
+    </feature>
+
     <!-- OH2 -->
 
     <feature name="openhab2-addon-sonos" description="" version="${project.version}">

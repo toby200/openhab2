@@ -52,6 +52,21 @@
         <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
         <license.maven.plugin.version>2.10</license.maven.plugin.version>
 
+        <!-- provided by Karaf -->
+        <dep.slf4j.api.groupId>org.slf4j</dep.slf4j.api.groupId>
+        <dep.slf4j.api.artifactId>slf4j-api</dep.slf4j.api.artifactId>
+        <dep.slf4j.api.version>1.7.7</dep.slf4j.api.version>
+
+        <!-- custom dependencies -->
+        <dep.javax.servlet.api.groupId>javax.servlet</dep.javax.servlet.api.groupId>
+        <dep.javax.servlet.api.artifactId>javax.servlet-api</dep.javax.servlet.api.artifactId>
+        <dep.javax.servlet.api.version>3.1.0</dep.javax.servlet.api.version>
+
+        <dep.org.osgi.compendium.split.groupId>tmp.need.a.home</dep.org.osgi.compendium.split.groupId>
+        <dep.org.osgi.compendium.split.component.artifact>org.osgi.compendium.split.service.component</dep.org.osgi.compendium.split.component.artifact>
+        <dep.org.osgi.compendium.split.event.artifact>org.osgi.compendium.split.service.event</dep.org.osgi.compendium.split.event.artifact>
+        <dep.org.osgi.compendium.split.version>5.0.0</dep.org.osgi.compendium.split.version>
+
         <!-- openHAB 2 distribution: ESH -->
         <dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>tmp.need.a.home</dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>
         <dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>org.eclipse.smarthome.ui.paperui</dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>
@@ -88,9 +103,6 @@
         <dep.bsn.javax.mail.groupId>tmp.need.a.home</dep.bsn.javax.mail.groupId>
         <dep.bsn.javax.mail.artifactId>javax.mail</dep.bsn.javax.mail.artifactId>
         <dep.bsn.javax.mail.version>1.4.0.v201005080615</dep.bsn.javax.mail.version>
-        <dep.bsn.javax.servlet.groupId>tmp.need.a.home</dep.bsn.javax.servlet.groupId>
-        <dep.bsn.javax.servlet.artifactId>javax.servlet</dep.bsn.javax.servlet.artifactId>
-        <dep.bsn.javax.servlet.version>3.1.0.v20140303-1611</dep.bsn.javax.servlet.version>
         <dep.bsn.javax.xml.groupId>tmp.need.a.home</dep.bsn.javax.xml.groupId>
         <dep.bsn.javax.xml.artifactId>javax.xml</dep.bsn.javax.xml.artifactId>
         <dep.bsn.javax.xml.version>1.3.4.v201005080400</dep.bsn.javax.xml.version>
@@ -268,10 +280,6 @@
         <dep.bsn.org.eclipse.jetty.xml.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.xml.groupId>
         <dep.bsn.org.eclipse.jetty.xml.artifactId>org.eclipse.jetty.xml</dep.bsn.org.eclipse.jetty.xml.artifactId>
         <dep.bsn.org.eclipse.jetty.xml.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.xml.version>
-        <dep.org.osgi.compendium.split.groupId>tmp.need.a.home</dep.org.osgi.compendium.split.groupId>
-        <dep.org.osgi.compendium.split.component.artifact>org.osgi.compendium.split.service.component</dep.org.osgi.compendium.split.component.artifact>
-        <dep.org.osgi.compendium.split.event.artifact>org.osgi.compendium.split.service.event</dep.org.osgi.compendium.split.event.artifact>
-        <dep.org.osgi.compendium.split.version>5.0.0</dep.org.osgi.compendium.split.version>
         <dep.bsn.org.eclipse.paho.client.mqttv3.groupId>tmp.need.a.home</dep.bsn.org.eclipse.paho.client.mqttv3.groupId>
         <dep.bsn.org.eclipse.paho.client.mqttv3.artifactId>org.eclipse.paho.client.mqttv3</dep.bsn.org.eclipse.paho.client.mqttv3.artifactId>
         <dep.bsn.org.eclipse.paho.client.mqttv3.version>1.0.2</dep.bsn.org.eclipse.paho.client.mqttv3.version>

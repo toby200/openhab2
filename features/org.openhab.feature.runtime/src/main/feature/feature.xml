@@ -4,17 +4,23 @@
     <!-- <feature name="${project.artifactId}" description="${project.name}" version="${project.version}"> -->
     <feature name="openhab2-runtime" description="${project.name}" version="${project.version}">
         <details>${project.description}</details>
-        <feature>openhab2-runtime-split-tp</feature>
+        <feature>openhab2-tp-base</feature>
         <feature>openhab2-runtime-split-esh</feature>
         <feature>openhab2-runtime-split-oh2</feature>
+        <feature>openhab2-jetty</feature>
         <bundle start-level="50">mvn:de.maggu2810.playground/karaf-console-equinox/1.0.0</bundle>
+    </feature>
+
+    <feature name="openhab2-jetty" description="openHAB2 Jetty integration" version="${project.version}">
+        <details>openHAB2: Bundles for Jetty integration</details>
+        <feature prerequisite="false" dependency="false">openhab2-tp-jetty</feature>
+        <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.jetty/${project.version}</bundle>
     </feature>
 
     <feature name="openhab2-runtime-split-oh2" description="openHAB2 Runtime (OH2)" version="${project.version}">
         <details>openHAB2 Runtime (OH2 specific part)</details>
         <bundle start-level="55">mvn:org.openhab.bundles.core/org.openhab.core/${project.version}</bundle>
         <bundle start-level="54">mvn:org.openhab.bundles.core/org.openhab.core.compat1x/${project.version}</bundle>
-        <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.jetty/${project.version}</bundle>
         <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.rest.docs/${project.version}</bundle>
         <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.transport.serial/${project.version}</bundle>
         <bundle start-level="54">mvn:org.openhab.bundles.ui/org.openhab.ui.dashboard/${project.version}</bundle>
@@ -74,8 +80,8 @@
         <bundle start-level="54">mvn:org.eclipse.smarthome/org.eclipse.smarthome.ui.icon/${esh.version}</bundle>
     </feature>
 
-    <feature name="openhab2-runtime-split-tp" description="openHAB2 Runtime (TP)" version="${project.version}">
-        <details>openHAB2 Runtime (non-ESH and non-OH2 specific part)</details>
+    <feature name="openhab2-tp-base" description="openHAB2 TargetPlatform Base" version="${project.version}">
+        <details>openHAB2 targetplatform non-ESH and non-OH2 specific part to be splitted</details>
         <feature>equinox-ds</feature>
         <feature>equinox-event</feature>
         <feature>javax-http-servlet</feature>
@@ -123,7 +129,6 @@
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.emf.mwe2.runtime.groupId}/${dep.bsn.org.eclipse.emf.mwe2.runtime.artifactId}/${dep.bsn.org.eclipse.emf.mwe2.runtime.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.equinox.app.groupId}/${dep.bsn.org.eclipse.equinox.app.artifactId}/${dep.bsn.org.eclipse.equinox.app.version}</bundle>
         <bundle start-level="51">mvn:${dep.bsn.org.eclipse.equinox.common.groupId}/${dep.bsn.org.eclipse.equinox.common.artifactId}/${dep.bsn.org.eclipse.equinox.common.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.equinox.http.servlet.groupId}/${dep.bsn.org.eclipse.equinox.http.servlet.artifactId}/${dep.bsn.org.eclipse.equinox.http.servlet.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.equinox.launcher.groupId}/${dep.bsn.org.eclipse.equinox.launcher.artifactId}/${dep.bsn.org.eclipse.equinox.launcher.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.equinox.preferences.groupId}/${dep.bsn.org.eclipse.equinox.preferences.artifactId}/${dep.bsn.org.eclipse.equinox.preferences.version}</bundle>
         <bundle start-level="52">mvn:${dep.bsn.org.eclipse.equinox.registry.groupId}/${dep.bsn.org.eclipse.equinox.registry.artifactId}/${dep.bsn.org.eclipse.equinox.registry.version}</bundle>
@@ -132,20 +137,6 @@
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jdt.core.groupId}/${dep.bsn.org.eclipse.jdt.core.artifactId}/${dep.bsn.org.eclipse.jdt.core.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jdt.debug.groupId}/${dep.bsn.org.eclipse.jdt.debug.artifactId}/${dep.bsn.org.eclipse.jdt.debug.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jdt.launching.groupId}/${dep.bsn.org.eclipse.jdt.launching.artifactId}/${dep.bsn.org.eclipse.jdt.launching.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.client.groupId}/${dep.bsn.org.eclipse.jetty.client.artifactId}/${dep.bsn.org.eclipse.jetty.client.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.continuation.groupId}/${dep.bsn.org.eclipse.jetty.continuation.artifactId}/${dep.bsn.org.eclipse.jetty.continuation.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.deploy.groupId}/${dep.bsn.org.eclipse.jetty.deploy.artifactId}/${dep.bsn.org.eclipse.jetty.deploy.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.http.groupId}/${dep.bsn.org.eclipse.jetty.http.artifactId}/${dep.bsn.org.eclipse.jetty.http.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.io.groupId}/${dep.bsn.org.eclipse.jetty.io.artifactId}/${dep.bsn.org.eclipse.jetty.io.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.osgi.boot.groupId}/${dep.bsn.org.eclipse.jetty.osgi.boot.artifactId}/${dep.bsn.org.eclipse.jetty.osgi.boot.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.osgi.httpservice.groupId}/${dep.bsn.org.eclipse.jetty.osgi.httpservice.artifactId}/${dep.bsn.org.eclipse.jetty.osgi.httpservice.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.rewrite.groupId}/${dep.bsn.org.eclipse.jetty.rewrite.artifactId}/${dep.bsn.org.eclipse.jetty.rewrite.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.security.groupId}/${dep.bsn.org.eclipse.jetty.security.artifactId}/${dep.bsn.org.eclipse.jetty.security.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.server.groupId}/${dep.bsn.org.eclipse.jetty.server.artifactId}/${dep.bsn.org.eclipse.jetty.server.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.servlet.groupId}/${dep.bsn.org.eclipse.jetty.servlet.artifactId}/${dep.bsn.org.eclipse.jetty.servlet.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.util.groupId}/${dep.bsn.org.eclipse.jetty.util.artifactId}/${dep.bsn.org.eclipse.jetty.util.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.webapp.groupId}/${dep.bsn.org.eclipse.jetty.webapp.artifactId}/${dep.bsn.org.eclipse.jetty.webapp.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.xml.groupId}/${dep.bsn.org.eclipse.jetty.xml.artifactId}/${dep.bsn.org.eclipse.jetty.xml.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.paho.client.mqttv3.groupId}/${dep.bsn.org.eclipse.paho.client.mqttv3.artifactId}/${dep.bsn.org.eclipse.paho.client.mqttv3.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.text.groupId}/${dep.bsn.org.eclipse.text.artifactId}/${dep.bsn.org.eclipse.text.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xpand.groupId}/${dep.bsn.org.eclipse.xpand.artifactId}/${dep.bsn.org.eclipse.xpand.version}</bundle>
@@ -162,6 +153,25 @@
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xtext.xbase.lib.groupId}/${dep.bsn.org.eclipse.xtext.xbase.lib.artifactId}/${dep.bsn.org.eclipse.xtext.xbase.lib.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.jupnp.groupId}/${dep.bsn.org.jupnp.artifactId}/${dep.bsn.org.jupnp.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.objectweb.asm.groupId}/${dep.bsn.org.objectweb.asm.artifactId}/${dep.bsn.org.objectweb.asm.version}</bundle>
+    </feature>
+
+    <feature name="openhab2-tp-jetty" description="Jetty as it is used for openHAB 2" version="9.2.12.1">
+        <feature>javax-http-servlet</feature>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.equinox.http.servlet.groupId}/${dep.bsn.org.eclipse.equinox.http.servlet.artifactId}/${dep.bsn.org.eclipse.equinox.http.servlet.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.client.groupId}/${dep.bsn.org.eclipse.jetty.client.artifactId}/${dep.bsn.org.eclipse.jetty.client.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.continuation.groupId}/${dep.bsn.org.eclipse.jetty.continuation.artifactId}/${dep.bsn.org.eclipse.jetty.continuation.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.deploy.groupId}/${dep.bsn.org.eclipse.jetty.deploy.artifactId}/${dep.bsn.org.eclipse.jetty.deploy.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.http.groupId}/${dep.bsn.org.eclipse.jetty.http.artifactId}/${dep.bsn.org.eclipse.jetty.http.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.io.groupId}/${dep.bsn.org.eclipse.jetty.io.artifactId}/${dep.bsn.org.eclipse.jetty.io.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.osgi.boot.groupId}/${dep.bsn.org.eclipse.jetty.osgi.boot.artifactId}/${dep.bsn.org.eclipse.jetty.osgi.boot.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.osgi.httpservice.groupId}/${dep.bsn.org.eclipse.jetty.osgi.httpservice.artifactId}/${dep.bsn.org.eclipse.jetty.osgi.httpservice.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.rewrite.groupId}/${dep.bsn.org.eclipse.jetty.rewrite.artifactId}/${dep.bsn.org.eclipse.jetty.rewrite.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.security.groupId}/${dep.bsn.org.eclipse.jetty.security.artifactId}/${dep.bsn.org.eclipse.jetty.security.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.server.groupId}/${dep.bsn.org.eclipse.jetty.server.artifactId}/${dep.bsn.org.eclipse.jetty.server.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.servlet.groupId}/${dep.bsn.org.eclipse.jetty.servlet.artifactId}/${dep.bsn.org.eclipse.jetty.servlet.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.util.groupId}/${dep.bsn.org.eclipse.jetty.util.artifactId}/${dep.bsn.org.eclipse.jetty.util.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.webapp.groupId}/${dep.bsn.org.eclipse.jetty.webapp.artifactId}/${dep.bsn.org.eclipse.jetty.webapp.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jetty.xml.groupId}/${dep.bsn.org.eclipse.jetty.xml.artifactId}/${dep.bsn.org.eclipse.jetty.xml.version}</bundle>
     </feature>
 
     <feature name="javax-http-servlet" description="Begin with migration to PAX Web" version="0.1">

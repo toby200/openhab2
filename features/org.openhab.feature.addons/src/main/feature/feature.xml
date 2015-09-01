@@ -207,6 +207,11 @@
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.rfxcom/${oh1.version}</bundle>
     </feature>
 
+    <feature name="openhab2-addon-samsungac" description="" version="${project.version}">
+        <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.samsungac/${oh1.version}</bundle>
+        <configfile finalname="conf/services/samsungac.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/samsungac</configfile>
+    </feature>
+
     <feature name="openhab2-addon-snmp" description="" version="${project.version}">
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.snmp/${oh1.version}</bundle>
         <configfile finalname="conf/services/snmp.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/snmp</configfile>

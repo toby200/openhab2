@@ -268,9 +268,10 @@
         <dep.bsn.org.eclipse.jetty.xml.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.xml.groupId>
         <dep.bsn.org.eclipse.jetty.xml.artifactId>org.eclipse.jetty.xml</dep.bsn.org.eclipse.jetty.xml.artifactId>
         <dep.bsn.org.eclipse.jetty.xml.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.xml.version>
-        <dep.bsn.org.eclipse.osgi.services.groupId>tmp.need.a.home</dep.bsn.org.eclipse.osgi.services.groupId>
-        <dep.bsn.org.eclipse.osgi.services.artifactId>org.eclipse.osgi.services</dep.bsn.org.eclipse.osgi.services.artifactId>
-        <dep.bsn.org.eclipse.osgi.services.version>3.4.0.v20140312-2051</dep.bsn.org.eclipse.osgi.services.version>
+        <dep.org.osgi.compendium.split.groupId>tmp.need.a.home</dep.org.osgi.compendium.split.groupId>
+        <dep.org.osgi.compendium.split.component.artifact>org.osgi.compendium.split.service.component</dep.org.osgi.compendium.split.component.artifact>
+        <dep.org.osgi.compendium.split.event.artifact>org.osgi.compendium.split.service.event</dep.org.osgi.compendium.split.event.artifact>
+        <dep.org.osgi.compendium.split.version>5.0.0</dep.org.osgi.compendium.split.version>
         <dep.bsn.org.eclipse.paho.client.mqttv3.groupId>tmp.need.a.home</dep.bsn.org.eclipse.paho.client.mqttv3.groupId>
         <dep.bsn.org.eclipse.paho.client.mqttv3.artifactId>org.eclipse.paho.client.mqttv3</dep.bsn.org.eclipse.paho.client.mqttv3.artifactId>
         <dep.bsn.org.eclipse.paho.client.mqttv3.version>1.0.2</dep.bsn.org.eclipse.paho.client.mqttv3.version>

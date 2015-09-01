@@ -29,11 +29,6 @@
         <dep.osgi.compendium.groupId>org.osgi</dep.osgi.compendium.groupId>
         <dep.osgi.compendium.artifactId>org.osgi.compendium</dep.osgi.compendium.artifactId>
         <dep.osgi.compendium.version>5.0.0</dep.osgi.compendium.version>
-
-        <!-- provided by Karaf -->
-        <dep.slf4j.api.groupId>org.slf4j</dep.slf4j.api.groupId>
-        <dep.slf4j.api.artifactId>slf4j-api</dep.slf4j.api.artifactId>
-        <dep.slf4j.api.version>1.7.7</dep.slf4j.api.version>
     </properties>
 
     <dependencies>

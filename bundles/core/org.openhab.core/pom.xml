@@ -59,9 +59,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>${dep.bsn.javax.servlet.groupId}</groupId>
-            <artifactId>${dep.bsn.javax.servlet.artifactId}</artifactId>
-            <version>${dep.bsn.javax.servlet.version}</version>
+            <groupId>${dep.javax.servlet.api.groupId}</groupId>
+            <artifactId>${dep.javax.servlet.api.artifactId}</artifactId>
+            <version>${dep.javax.servlet.api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

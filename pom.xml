@@ -70,7 +70,7 @@
         <!-- openHAB 2 distribution: ESH -->
         <dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>tmp.need.a.home</dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>
         <dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>org.eclipse.smarthome.ui.paperui</dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>
-        <dep.bsn.org.eclipse.smarthome.ui.paperui.version>0.8.0.201508200717</dep.bsn.org.eclipse.smarthome.ui.paperui.version>
+        <dep.bsn.org.eclipse.smarthome.ui.paperui.version>0.8.0.201509021731</dep.bsn.org.eclipse.smarthome.ui.paperui.version>
 
         <!-- openHAB 2 distribution: TP -->
         <dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>tmp.need.a.home</dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>

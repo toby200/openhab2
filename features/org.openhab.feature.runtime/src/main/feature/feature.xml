@@ -53,8 +53,6 @@
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.sitemap/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.sse/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mdns/${esh.version}</bundle>
-        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mqtt/${esh.version}</bundle>
-        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.upnp/${esh.version}</bundle>
         <bundle start-level="55">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.core/${esh.version}</bundle>
         <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.item/${esh.version}</bundle>
         <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.item.runtime/${esh.version}</bundle>
@@ -85,10 +83,7 @@
         <feature>equinox-ds</feature>
         <feature>equinox-event</feature>
         <feature>javax-http-servlet</feature>
-        <bundle start-level="54">mvn:${dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId}/${dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.jersey-min.version}</bundle>
-        <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.version}</bundle>
-        <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.publisher.groupId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.com.google.gson.groupId}/${dep.bsn.com.google.gson.artifactId}/${dep.bsn.com.google.gson.version}</bundle>
+        <feature>openhab2-tp-jaxrs</feature>
         <bundle start-level="54">mvn:${dep.bsn.com.google.guava.groupId}/${dep.bsn.com.google.guava.artifactId}/${dep.bsn.com.google.guava.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.com.google.inject.groupId}/${dep.bsn.com.google.inject.artifactId}/${dep.bsn.com.google.inject.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.com.ibm.icu.groupId}/${dep.bsn.com.ibm.icu.artifactId}/${dep.bsn.com.ibm.icu.version}</bundle>
@@ -137,7 +132,6 @@
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jdt.core.groupId}/${dep.bsn.org.eclipse.jdt.core.artifactId}/${dep.bsn.org.eclipse.jdt.core.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jdt.debug.groupId}/${dep.bsn.org.eclipse.jdt.debug.artifactId}/${dep.bsn.org.eclipse.jdt.debug.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.jdt.launching.groupId}/${dep.bsn.org.eclipse.jdt.launching.artifactId}/${dep.bsn.org.eclipse.jdt.launching.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.paho.client.mqttv3.groupId}/${dep.bsn.org.eclipse.paho.client.mqttv3.artifactId}/${dep.bsn.org.eclipse.paho.client.mqttv3.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.text.groupId}/${dep.bsn.org.eclipse.text.artifactId}/${dep.bsn.org.eclipse.text.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xpand.groupId}/${dep.bsn.org.eclipse.xpand.artifactId}/${dep.bsn.org.eclipse.xpand.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xtend.groupId}/${dep.bsn.org.eclipse.xtend.artifactId}/${dep.bsn.org.eclipse.xtend.version}</bundle>
@@ -151,8 +145,24 @@
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xtext.util.groupId}/${dep.bsn.org.eclipse.xtext.util.artifactId}/${dep.bsn.org.eclipse.xtext.util.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xtext.xbase.groupId}/${dep.bsn.org.eclipse.xtext.xbase.artifactId}/${dep.bsn.org.eclipse.xtext.xbase.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.eclipse.xtext.xbase.lib.groupId}/${dep.bsn.org.eclipse.xtext.xbase.lib.artifactId}/${dep.bsn.org.eclipse.xtext.xbase.lib.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.jupnp.groupId}/${dep.bsn.org.jupnp.artifactId}/${dep.bsn.org.jupnp.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.org.objectweb.asm.groupId}/${dep.bsn.org.objectweb.asm.artifactId}/${dep.bsn.org.objectweb.asm.version}</bundle>
+    </feature>
+
+    <feature name="openhab2-tp-jaxrs" version="${project.version}">
+        <bundle start-level="54">mvn:${dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId}/${dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.jersey-min.version}</bundle>
+        <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.version}</bundle>
+        <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.publisher.groupId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.com.google.gson.groupId}/${dep.bsn.com.google.gson.artifactId}/${dep.bsn.com.google.gson.version}</bundle>
+    </feature>
+
+    <feature name="openhab2-transport-mqtt" version="${project.version}">
+        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.paho.client.mqttv3.groupId}/${dep.bsn.org.eclipse.paho.client.mqttv3.artifactId}/${dep.bsn.org.eclipse.paho.client.mqttv3.version}</bundle>
+        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mqtt/${esh.version}</bundle>
+    </feature>
+
+    <feature name="openhab2-transport-upnp" version="${project.version}">
+        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.upnp/${esh.version}</bundle>
+        <bundle start-level="54">mvn:${dep.bsn.org.jupnp.groupId}/${dep.bsn.org.jupnp.artifactId}/${dep.bsn.org.jupnp.version}</bundle>
     </feature>
 
     <feature name="openhab2-tp-jetty" description="Jetty as it is used for openHAB 2" version="9.2.12.1">

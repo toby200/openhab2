@@ -182,14 +182,14 @@
     </feature>
 
     <feature name="equinox-event" description="OSGi Event Admin service specification for event-based communication" version="${dep.bsn.org.eclipse.equinox.event.version}">
-        <bundle start-level="5" dependency="true">mvn:${dep.bsn.org.eclipse.equinox.util.groupId}/${dep.bsn.org.eclipse.equinox.util.artifactId}/${dep.bsn.org.eclipse.equinox.util.version}</bundle>
-        <bundle start-level="5" dependency="true">mvn:${dep.org.osgi.compendium.split.groupId}/${dep.org.osgi.compendium.split.event.artifact}/${dep.org.osgi.compendium.split.version}</bundle>
+        <bundle start-level="5">mvn:${dep.bsn.org.eclipse.equinox.util.groupId}/${dep.bsn.org.eclipse.equinox.util.artifactId}/${dep.bsn.org.eclipse.equinox.util.version}</bundle>
+        <bundle start-level="5">mvn:${dep.org.osgi.compendium.split.groupId}/${dep.org.osgi.compendium.split.event.artifact}/${dep.org.osgi.compendium.split.version}</bundle>
         <bundle start-level="5">mvn:${dep.bsn.org.eclipse.equinox.event.groupId}/${dep.bsn.org.eclipse.equinox.event.artifactId}/${dep.bsn.org.eclipse.equinox.event.version}</bundle>
     </feature>
 
     <feature name="equinox-ds" description="Declarative Service support" version="${dep.bsn.org.eclipse.equinox.ds.version}">
-        <bundle start-level="30" dependency="true">mvn:${dep.bsn.org.eclipse.equinox.util.groupId}/${dep.bsn.org.eclipse.equinox.util.artifactId}/${dep.bsn.org.eclipse.equinox.util.version}</bundle>
-        <bundle start-level="30" dependency="true">mvn:${dep.org.osgi.compendium.split.groupId}/${dep.org.osgi.compendium.split.component.artifact}/${dep.org.osgi.compendium.split.version}</bundle>
+        <bundle start-level="30">mvn:${dep.bsn.org.eclipse.equinox.util.groupId}/${dep.bsn.org.eclipse.equinox.util.artifactId}/${dep.bsn.org.eclipse.equinox.util.version}</bundle>
+        <bundle start-level="30">mvn:${dep.org.osgi.compendium.split.groupId}/${dep.org.osgi.compendium.split.component.artifact}/${dep.org.osgi.compendium.split.version}</bundle>
         <bundle start-level="30">mvn:${dep.bsn.org.eclipse.equinox.ds.groupId}/${dep.bsn.org.eclipse.equinox.ds.artifactId}/${dep.bsn.org.eclipse.equinox.ds.version}</bundle>
         <capability>
             osgi.extender;osgi.extender=&quot;osgi.component&quot;;uses:=&quot;org.osgi.service.component&quot;;version:Version=&quot;1.2.1&quot;

@@ -21,10 +21,9 @@
         <details>openHAB2 Runtime (OH2 specific part)</details>
         <bundle start-level="55">mvn:org.openhab.bundles.core/org.openhab.core/${project.version}</bundle>
         <bundle start-level="54">mvn:org.openhab.bundles.core/org.openhab.core.compat1x/${project.version}</bundle>
+
+        <feature>openhab2-addon-ui-dashboard</feature>
         <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.rest.docs/${project.version}</bundle>
-        <bundle start-level="54">mvn:org.openhab.bundles.io/org.openhab.io.transport.serial/${project.version}</bundle>
-        <bundle start-level="54">mvn:org.openhab.bundles.ui/org.openhab.ui.dashboard/${project.version}</bundle>
-        <bundle start-level="54">mvn:org.openhab.ui/org.openhab.ui.classicui/${project.version}</bundle>
     </feature>
 
     <feature name="openhab2-runtime-split-esh" description="openHAB2 Runtime (ESH)" version="${project.version}">
@@ -153,16 +152,6 @@
         <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.provider.gson.version}</bundle>
         <bundle start-level="55">mvn:${dep.bsn.com.eclipsesource.jaxrs.publisher.groupId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId}/${dep.bsn.com.eclipsesource.jaxrs.publisher.version}</bundle>
         <bundle start-level="54">mvn:${dep.bsn.com.google.gson.groupId}/${dep.bsn.com.google.gson.artifactId}/${dep.bsn.com.google.gson.version}</bundle>
-    </feature>
-
-    <feature name="openhab2-transport-mqtt" version="${project.version}">
-        <bundle start-level="54">mvn:${dep.bsn.org.eclipse.paho.client.mqttv3.groupId}/${dep.bsn.org.eclipse.paho.client.mqttv3.artifactId}/${dep.bsn.org.eclipse.paho.client.mqttv3.version}</bundle>
-        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mqtt/${esh.version}</bundle>
-    </feature>
-
-    <feature name="openhab2-transport-upnp" version="${project.version}">
-        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.upnp/${esh.version}</bundle>
-        <bundle start-level="54">mvn:${dep.bsn.org.jupnp.groupId}/${dep.bsn.org.jupnp.artifactId}/${dep.bsn.org.jupnp.version}</bundle>
     </feature>
 
     <feature name="openhab2-tp-jetty" description="Jetty as it is used for openHAB 2" version="9.2.12.1">

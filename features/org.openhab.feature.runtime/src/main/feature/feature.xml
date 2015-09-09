@@ -8,6 +8,12 @@
         <feature>openhab2-runtime-split-esh</feature>
         <feature>openhab2-runtime-split-oh2</feature>
         <feature>openhab2-jetty</feature>
+        <feature>openhab2-tp-addon-console-karaf</feature>
+    </feature>
+
+    <feature name="openhab2-tp-addon-console-karaf" description="Karaf Console support for SmartHome stuff" version="${project.version}">
+        <feature>shell</feature>
+        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.console.karaf/${esh.version}</bundle>
         <bundle start-level="50">mvn:de.maggu2810.playground/karaf-console-equinox/1.0.0</bundle>
     </feature>
 
@@ -43,7 +49,6 @@
         <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.thing.xml/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.core/org.eclipse.smarthome.core.transform/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.console/${esh.version}</bundle>
-        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.console.karaf/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.monitor/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.multimedia/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.net/${esh.version}</bundle>

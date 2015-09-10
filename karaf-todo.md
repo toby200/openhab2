@@ -4,18 +4,6 @@
 
 ## high
 
-* Some bundles kept in state "starting".
-  This needs further inspection, perhaps the usage of Require-Bundle is the
-  trigger.
-  The ESH team decided not changing the model bundles:
-  https://bugs.eclipse.org/bugs/show_bug.cgi?id=476024#c7
-  ==
-  Perhaps the bundles must not use: Bundle-ActivationPolicy = lazy
-  http://wiki.osgi.org/wiki/Bundle-ActivationPolicy
-  ==
-  Reported:
-  https://bugs.eclipse.org/bugs/show_bug.cgi?id=477075
-
 ## normal
 
 * Test on windows machine (e.g. bin/setenv.bin for http(s) port)

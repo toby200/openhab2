@@ -77,18 +77,65 @@
         <dep.bsn.org.eclipse.smarthome.ui.paperui.version>0.8.0.201509021731</dep.bsn.org.eclipse.smarthome.ui.paperui.version>
 
         <!-- openHAB 2 distribution: TP -->
-        <dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>tmp.need.a.home</dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>
-        <dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId>com.eclipsesource.jaxrs.jersey-min</dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId>
+        <dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>com.eclipsesource.jaxrs</dep.bsn.com.eclipsesource.jaxrs.jersey-min.groupId>
+        <dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId>jersey-min</dep.bsn.com.eclipsesource.jaxrs.jersey-min.artifactId>
         <dep.bsn.com.eclipsesource.jaxrs.jersey-min.version>2.18</dep.bsn.com.eclipsesource.jaxrs.jersey-min.version>
-        <dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId>tmp.need.a.home</dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId>
-        <dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId>com.eclipsesource.jaxrs.provider.gson</dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId>
-        <dep.bsn.com.eclipsesource.jaxrs.provider.gson.version>2.3.0.201506221200</dep.bsn.com.eclipsesource.jaxrs.provider.gson.version>
-        <dep.bsn.com.eclipsesource.jaxrs.publisher.groupId>tmp.need.a.home</dep.bsn.com.eclipsesource.jaxrs.publisher.groupId>
-        <dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId>com.eclipsesource.jaxrs.publisher</dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId>
-        <dep.bsn.com.eclipsesource.jaxrs.publisher.version>5.0.0.201506221200</dep.bsn.com.eclipsesource.jaxrs.publisher.version>
-        <dep.bsn.com.google.gson.groupId>tmp.need.a.home</dep.bsn.com.google.gson.groupId>
-        <dep.bsn.com.google.gson.artifactId>com.google.gson</dep.bsn.com.google.gson.artifactId>
+
+        <dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId>com.eclipsesource.jaxrs</dep.bsn.com.eclipsesource.jaxrs.provider.gson.groupId>
+        <dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId>provider-gson</dep.bsn.com.eclipsesource.jaxrs.provider.gson.artifactId>
+        <dep.bsn.com.eclipsesource.jaxrs.provider.gson.version>2.3</dep.bsn.com.eclipsesource.jaxrs.provider.gson.version>
+
+        <dep.bsn.com.eclipsesource.jaxrs.publisher.groupId>com.eclipsesource.jaxrs</dep.bsn.com.eclipsesource.jaxrs.publisher.groupId>
+        <dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId>publisher</dep.bsn.com.eclipsesource.jaxrs.publisher.artifactId>
+        <dep.bsn.com.eclipsesource.jaxrs.publisher.version>5.0</dep.bsn.com.eclipsesource.jaxrs.publisher.version>
+
+        <dep.bsn.com.google.gson.groupId>com.google.code.gson</dep.bsn.com.google.gson.groupId>
+        <dep.bsn.com.google.gson.artifactId>gson</dep.bsn.com.google.gson.artifactId>
         <dep.bsn.com.google.gson.version>2.3.1</dep.bsn.com.google.gson.version>
+
+        <dep.bsn.org.eclipse.jetty.osgi.boot.groupId>org.eclipse.jetty.osgi</dep.bsn.org.eclipse.jetty.osgi.boot.groupId>
+        <dep.bsn.org.eclipse.jetty.osgi.boot.artifactId>jetty-osgi-boot</dep.bsn.org.eclipse.jetty.osgi.boot.artifactId>
+        <dep.bsn.org.eclipse.jetty.osgi.boot.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.osgi.boot.version>
+        <dep.bsn.org.eclipse.jetty.osgi.httpservice.groupId>org.eclipse.jetty.osgi</dep.bsn.org.eclipse.jetty.osgi.httpservice.groupId>
+        <dep.bsn.org.eclipse.jetty.osgi.httpservice.artifactId>jetty-httpservice</dep.bsn.org.eclipse.jetty.osgi.httpservice.artifactId>
+        <dep.bsn.org.eclipse.jetty.osgi.httpservice.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.osgi.httpservice.version>
+        <dep.bsn.org.eclipse.jetty.client.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.client.groupId>
+        <dep.bsn.org.eclipse.jetty.client.artifactId>jetty-client</dep.bsn.org.eclipse.jetty.client.artifactId>
+        <dep.bsn.org.eclipse.jetty.client.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.client.version>
+        <dep.bsn.org.eclipse.jetty.continuation.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.continuation.groupId>
+        <dep.bsn.org.eclipse.jetty.continuation.artifactId>jetty-continuation</dep.bsn.org.eclipse.jetty.continuation.artifactId>
+        <dep.bsn.org.eclipse.jetty.continuation.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.continuation.version>
+        <dep.bsn.org.eclipse.jetty.deploy.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.deploy.groupId>
+        <dep.bsn.org.eclipse.jetty.deploy.artifactId>jetty-deploy</dep.bsn.org.eclipse.jetty.deploy.artifactId>
+        <dep.bsn.org.eclipse.jetty.deploy.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.deploy.version>
+        <dep.bsn.org.eclipse.jetty.http.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.http.groupId>
+        <dep.bsn.org.eclipse.jetty.http.artifactId>jetty-http</dep.bsn.org.eclipse.jetty.http.artifactId>
+        <dep.bsn.org.eclipse.jetty.http.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.http.version>
+        <dep.bsn.org.eclipse.jetty.io.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.io.groupId>
+        <dep.bsn.org.eclipse.jetty.io.artifactId>jetty-io</dep.bsn.org.eclipse.jetty.io.artifactId>
+        <dep.bsn.org.eclipse.jetty.io.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.io.version>
+        <dep.bsn.org.eclipse.jetty.rewrite.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.rewrite.groupId>
+        <dep.bsn.org.eclipse.jetty.rewrite.artifactId>jetty-rewrite</dep.bsn.org.eclipse.jetty.rewrite.artifactId>
+        <dep.bsn.org.eclipse.jetty.rewrite.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.rewrite.version>
+        <dep.bsn.org.eclipse.jetty.security.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.security.groupId>
+        <dep.bsn.org.eclipse.jetty.security.artifactId>jetty-security</dep.bsn.org.eclipse.jetty.security.artifactId>
+        <dep.bsn.org.eclipse.jetty.security.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.security.version>
+        <dep.bsn.org.eclipse.jetty.server.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.server.groupId>
+        <dep.bsn.org.eclipse.jetty.server.artifactId>jetty-server</dep.bsn.org.eclipse.jetty.server.artifactId>
+        <dep.bsn.org.eclipse.jetty.server.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.server.version>
+        <dep.bsn.org.eclipse.jetty.servlet.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.servlet.groupId>
+        <dep.bsn.org.eclipse.jetty.servlet.artifactId>jetty-servlet</dep.bsn.org.eclipse.jetty.servlet.artifactId>
+        <dep.bsn.org.eclipse.jetty.servlet.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.servlet.version>
+        <dep.bsn.org.eclipse.jetty.util.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.util.groupId>
+        <dep.bsn.org.eclipse.jetty.util.artifactId>jetty-util</dep.bsn.org.eclipse.jetty.util.artifactId>
+        <dep.bsn.org.eclipse.jetty.util.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.util.version>
+        <dep.bsn.org.eclipse.jetty.webapp.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.webapp.groupId>
+        <dep.bsn.org.eclipse.jetty.webapp.artifactId>jetty-webapp</dep.bsn.org.eclipse.jetty.webapp.artifactId>
+        <dep.bsn.org.eclipse.jetty.webapp.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.webapp.version>
+        <dep.bsn.org.eclipse.jetty.xml.groupId>org.eclipse.jetty</dep.bsn.org.eclipse.jetty.xml.groupId>
+        <dep.bsn.org.eclipse.jetty.xml.artifactId>jetty-xml</dep.bsn.org.eclipse.jetty.xml.artifactId>
+        <dep.bsn.org.eclipse.jetty.xml.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.xml.version>
+
         <dep.bsn.com.google.guava.groupId>tmp.need.a.home</dep.bsn.com.google.guava.groupId>
         <dep.bsn.com.google.guava.artifactId>com.google.guava</dep.bsn.com.google.guava.artifactId>
         <dep.bsn.com.google.guava.version>10.0.1.v201203051515</dep.bsn.com.google.guava.version>
@@ -242,48 +289,6 @@
         <dep.bsn.org.eclipse.jdt.launching.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jdt.launching.groupId>
         <dep.bsn.org.eclipse.jdt.launching.artifactId>org.eclipse.jdt.launching</dep.bsn.org.eclipse.jdt.launching.artifactId>
         <dep.bsn.org.eclipse.jdt.launching.version>3.7.102.v20141111-0953</dep.bsn.org.eclipse.jdt.launching.version>
-        <dep.bsn.org.eclipse.jetty.client.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.client.groupId>
-        <dep.bsn.org.eclipse.jetty.client.artifactId>org.eclipse.jetty.client</dep.bsn.org.eclipse.jetty.client.artifactId>
-        <dep.bsn.org.eclipse.jetty.client.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.client.version>
-        <dep.bsn.org.eclipse.jetty.continuation.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.continuation.groupId>
-        <dep.bsn.org.eclipse.jetty.continuation.artifactId>org.eclipse.jetty.continuation</dep.bsn.org.eclipse.jetty.continuation.artifactId>
-        <dep.bsn.org.eclipse.jetty.continuation.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.continuation.version>
-        <dep.bsn.org.eclipse.jetty.deploy.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.deploy.groupId>
-        <dep.bsn.org.eclipse.jetty.deploy.artifactId>org.eclipse.jetty.deploy</dep.bsn.org.eclipse.jetty.deploy.artifactId>
-        <dep.bsn.org.eclipse.jetty.deploy.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.deploy.version>
-        <dep.bsn.org.eclipse.jetty.http.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.http.groupId>
-        <dep.bsn.org.eclipse.jetty.http.artifactId>org.eclipse.jetty.http</dep.bsn.org.eclipse.jetty.http.artifactId>
-        <dep.bsn.org.eclipse.jetty.http.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.http.version>
-        <dep.bsn.org.eclipse.jetty.io.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.io.groupId>
-        <dep.bsn.org.eclipse.jetty.io.artifactId>org.eclipse.jetty.io</dep.bsn.org.eclipse.jetty.io.artifactId>
-        <dep.bsn.org.eclipse.jetty.io.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.io.version>
-        <dep.bsn.org.eclipse.jetty.osgi.boot.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.osgi.boot.groupId>
-        <dep.bsn.org.eclipse.jetty.osgi.boot.artifactId>org.eclipse.jetty.osgi.boot</dep.bsn.org.eclipse.jetty.osgi.boot.artifactId>
-        <dep.bsn.org.eclipse.jetty.osgi.boot.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.osgi.boot.version>
-        <dep.bsn.org.eclipse.jetty.osgi.httpservice.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.osgi.httpservice.groupId>
-        <dep.bsn.org.eclipse.jetty.osgi.httpservice.artifactId>org.eclipse.jetty.osgi.httpservice</dep.bsn.org.eclipse.jetty.osgi.httpservice.artifactId>
-        <dep.bsn.org.eclipse.jetty.osgi.httpservice.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.osgi.httpservice.version>
-        <dep.bsn.org.eclipse.jetty.rewrite.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.rewrite.groupId>
-        <dep.bsn.org.eclipse.jetty.rewrite.artifactId>org.eclipse.jetty.rewrite</dep.bsn.org.eclipse.jetty.rewrite.artifactId>
-        <dep.bsn.org.eclipse.jetty.rewrite.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.rewrite.version>
-        <dep.bsn.org.eclipse.jetty.security.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.security.groupId>
-        <dep.bsn.org.eclipse.jetty.security.artifactId>org.eclipse.jetty.security</dep.bsn.org.eclipse.jetty.security.artifactId>
-        <dep.bsn.org.eclipse.jetty.security.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.security.version>
-        <dep.bsn.org.eclipse.jetty.server.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.server.groupId>
-        <dep.bsn.org.eclipse.jetty.server.artifactId>org.eclipse.jetty.server</dep.bsn.org.eclipse.jetty.server.artifactId>
-        <dep.bsn.org.eclipse.jetty.server.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.server.version>
-        <dep.bsn.org.eclipse.jetty.servlet.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.servlet.groupId>
-        <dep.bsn.org.eclipse.jetty.servlet.artifactId>org.eclipse.jetty.servlet</dep.bsn.org.eclipse.jetty.servlet.artifactId>
-        <dep.bsn.org.eclipse.jetty.servlet.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.servlet.version>
-        <dep.bsn.org.eclipse.jetty.util.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.util.groupId>
-        <dep.bsn.org.eclipse.jetty.util.artifactId>org.eclipse.jetty.util</dep.bsn.org.eclipse.jetty.util.artifactId>
-        <dep.bsn.org.eclipse.jetty.util.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.util.version>
-        <dep.bsn.org.eclipse.jetty.webapp.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.webapp.groupId>
-        <dep.bsn.org.eclipse.jetty.webapp.artifactId>org.eclipse.jetty.webapp</dep.bsn.org.eclipse.jetty.webapp.artifactId>
-        <dep.bsn.org.eclipse.jetty.webapp.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.webapp.version>
-        <dep.bsn.org.eclipse.jetty.xml.groupId>tmp.need.a.home</dep.bsn.org.eclipse.jetty.xml.groupId>
-        <dep.bsn.org.eclipse.jetty.xml.artifactId>org.eclipse.jetty.xml</dep.bsn.org.eclipse.jetty.xml.artifactId>
-        <dep.bsn.org.eclipse.jetty.xml.version>9.2.12.v20150709</dep.bsn.org.eclipse.jetty.xml.version>
         <dep.bsn.org.eclipse.paho.client.mqttv3.groupId>tmp.need.a.home</dep.bsn.org.eclipse.paho.client.mqttv3.groupId>
         <dep.bsn.org.eclipse.paho.client.mqttv3.artifactId>org.eclipse.paho.client.mqttv3</dep.bsn.org.eclipse.paho.client.mqttv3.artifactId>
         <dep.bsn.org.eclipse.paho.client.mqttv3.version>1.0.2</dep.bsn.org.eclipse.paho.client.mqttv3.version>

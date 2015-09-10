@@ -67,6 +67,10 @@
         <dep.org.osgi.compendium.split.event.artifact>org.osgi.compendium.split.service.event</dep.org.osgi.compendium.split.event.artifact>
         <dep.org.osgi.compendium.split.version>5.0.0</dep.org.osgi.compendium.split.version>
 
+        <dep.jmdns.groupId>javax.jmdns</dep.jmdns.groupId>
+        <dep.jmdns.artifactId>jmdns</dep.jmdns.artifactId>
+        <dep.jmdns.version>3.4.2</dep.jmdns.version>
+
         <!-- openHAB 2 distribution: ESH -->
         <dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>tmp.need.a.home</dep.bsn.org.eclipse.smarthome.ui.paperui.groupId>
         <dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>org.eclipse.smarthome.ui.paperui</dep.bsn.org.eclipse.smarthome.ui.paperui.artifactId>

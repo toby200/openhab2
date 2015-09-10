@@ -56,7 +56,6 @@
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.core/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.sitemap/${esh.version}</bundle>
         <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.rest.sse/${esh.version}</bundle>
-        <bundle start-level="54">mvn:org.eclipse.smarthome.io/org.eclipse.smarthome.io.transport.mdns/${esh.version}</bundle>
         <bundle start-level="55">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.core/${esh.version}</bundle>
         <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.item/${esh.version}</bundle>
         <bundle start-level="53">mvn:org.eclipse.smarthome.model/org.eclipse.smarthome.model.item.runtime/${esh.version}</bundle>

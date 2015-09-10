@@ -4,13 +4,18 @@
 
 ## high
 
-* Some bundles kept in state "starting.
+* Some bundles kept in state "starting".
   This needs further inspection, perhaps the usage of Require-Bundle is the
   trigger.
   The ESH team decided not changing the model bundles:
   https://bugs.eclipse.org/bugs/show_bug.cgi?id=476024#c7
-* There is a problem with Jersey and at least the PaperUI.
+
+* [SOLVED] There is a problem with Jersey and at least the PaperUI.
   https://github.com/hstaudacher/osgi-jax-rs-connector/issues/106
+  The config.properties for Karaf 4.0.1 states that the OSGi framework exports
+  javax.annotation;version=1.2. This is wrong and needs to be removed.
+  It will be fixed in Karaf 4.0.2, we could remove the line or wait for bump.
+  https://github.com/apache/karaf/commit/59c11e4deebd6940136149a44f8485a941653e28
 
 ## normal
 

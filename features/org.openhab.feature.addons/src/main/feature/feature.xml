@@ -52,11 +52,13 @@
     </feature>
 
     <feature name="openhab2-addon-binding-enocean" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.enocean/${oh1.version}</bundle>
         <configfile finalname="conf/services/enocean.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/enocean</configfile>
     </feature>
 
     <feature name="openhab2-addon-binding-epsonprojector" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.epsonprojector/${oh1.version}</bundle>
         <configfile finalname="conf/services/epsonprojector.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/epsonprojector</configfile>
     </feature>
@@ -107,11 +109,13 @@
     </feature>
 
     <feature name="openhab2-addon-binding-insteonplm" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.insteonplm/${oh1.version}</bundle>
         <configfile finalname="conf/services/insteonplm.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/insteonplm</configfile>
     </feature>
 
     <feature name="openhab2-addon-binding-ipp" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-mdns</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.ipp/${project.version}</bundle>
     </feature>
 
@@ -163,6 +167,7 @@
     </feature>
 
     <feature name="openhab2-addon-binding-openenergymonitor" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.openenergymonitor/${oh1.version}</bundle>
         <configfile finalname="conf/services/openenergymonitor.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/openenergymonitor</configfile>
     </feature>
@@ -182,10 +187,12 @@
     </feature>
 
     <feature name="openhab2-addon-binding-pulseaudio" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-mdns</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.pulseaudio/${project.version}</bundle>
     </feature>
 
     <feature name="openhab2-addon-binding-rfxcom" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.rfxcom/${oh1.version}</bundle>
     </feature>
 
@@ -200,14 +207,17 @@
     </feature>
 
     <feature name="openhab2-addon-binding-sonos" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-upnp</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.sonos/${project.version}</bundle>
     </feature>
 
     <feature name="openhab2-addon-binding-squeezebox" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-upnp</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.squeezebox/${project.version}</bundle>
     </feature>
 
     <feature name="openhab2-addon-binding-swegonventilation" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.swegonventilation/${oh1.version}</bundle>
         <configfile finalname="conf/services/swegonventilation.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/swegonventilation</configfile>
     </feature>
@@ -248,6 +258,7 @@
     </feature>
 
     <feature name="openhab2-addon-binding-zwave" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.zwave/${oh1.version}</bundle>
         <configfile finalname="conf/services/zwave.cfg" override="false">mvn:${project.groupId}/org.openhab.feature.addons.external/${project.version}/cfg/zwave</configfile>
     </feature>

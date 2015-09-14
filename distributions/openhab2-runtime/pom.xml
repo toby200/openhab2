@@ -120,13 +120,6 @@
                 </includes>
             </resource>
             <resource>
-                <directory>../openhabhome</directory>
-                <filtering>false</filtering>
-                <includes>
-                    <include>runtime/**</include>
-                </includes>
-            </resource>
-            <resource>
                 <directory>src/main/filtered-resources</directory>
                 <filtering>true</filtering>
                 <includes>

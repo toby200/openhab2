@@ -44,45 +44,31 @@ import org.eclipse.smarthome.core.types.TypeParser;
 import org.openhab.core.OpenHAB;
 import org.openhab.io.myopenhab.MyOpenHABAction;
 import org.osgi.framework.BundleContext;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
-import org.osgi.service.component.annotations.Deactivate;
-import org.osgi.service.component.annotations.Modified;
-import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * This class starts my.openHAB connection service and implements interface to communicate with my.openHAB.
- *
  * It also acts as a persistence service to send commands and updates for selected items to my.openHAB
  * and processes commands for items received from my.openHAB.
  *
  * @author Victor Belov - Initial contribution
  * @author Kai Kreuzer - migrated code to new Jetty client and ESH APIs
- * @author Markus Rathgeb - using OSGi annotations
  */
-@Component(configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true, name = "org.openhab.myopenhab",
-        service = {PersistenceService.class, ActionService.class, EventSubscriber.class})
+
 public class MyOpenHABService implements PersistenceService, ActionService, MyOpenHABClientListener, EventSubscriber {
 
-    private final Logger logger = LoggerFactory.getLogger(MyOpenHABService.class);
+    private Logger logger = LoggerFactory.getLogger(MyOpenHABService.class);
 
     private static final String SECRET_FILE_NAME = "myopenhab" + File.separator + "secret";
 
     public static String myohVersion = null;
     private MyOpenHABClient myOHClient;
     private boolean persistenceEnabled = false;
-
     protected ItemRegistry itemRegistry = null;
-
     protected EventPublisher eventPublisher = null;
 
-    public MyOpenHABService() {
-    }
+    public MyOpenHABService() {}
 
     /**
      * This method sends notification message to mobile app through my.openHAB service
@@ -108,20 +94,17 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
         myOHClient.sendSMS(phone, message);
     }
 
-    @Activate
     protected void activate(BundleContext context, Map<String, ?> config) {
         myohVersion = StringUtils.substringBefore(context.getBundle().getVersion().toString(), ".qualifier");
         logger.debug("my.openHAB service activated");
         modified(config);
     }
 
-    @Deactivate
     protected void deactivate() {
         logger.debug("my.openHAB service deactivated");
         myOHClient.shutdown();
     }
 
-    @Modified
     protected void modified(Map<String, ?> config) {
         if (config != null) {
             persistenceEnabled = "persistence".equals(config.get("mode"));
@@ -149,6 +132,7 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
     /**
      * Reads the first line from specified file
      */
+
     private String readFirstLine(File file) {
         List<String> lines = null;
         try {
@@ -162,6 +146,7 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
     /**
      * Writes a String to a specified file
      */
+
     private void writeFile(File file, String content) {
         // create intermediary directories
         file.getParentFile().mkdirs();
@@ -176,11 +161,11 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
     }
 
     /**
-     * Creates a random secret and writes it to the <code>userdata/myopenhab</code> directory.
-     *
-     * An existing <code>secret</code> file won't be overwritten.
+     * Creates a random secret and writes it to the <code>userdata/myopenhab</code>
+     * directory. An existing <code>secret</code> file won't be overwritten.
      * Returns either existing secret from the file or newly created secret.
      */
+
     private String getSecret() {
         File file = new File(ConfigConstants.getUserDataFolder() + File.separator + SECRET_FILE_NAME);
         String newSecretString = "";
@@ -200,6 +185,7 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
     /*
      * @see org.openhab.io.myopenhab.internal.MyOHClientListener#sendCommand(java.lang.String, java.lang.String)
      */
+
     @Override
     public void sendCommand(String itemName, String commandString) {
         try {
@@ -210,18 +196,14 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
                     if (this.eventPublisher != null) {
                         if ("toggle".equalsIgnoreCase(commandString)
                                 && (item instanceof SwitchItem || item instanceof RollershutterItem)) {
-                            if (OnOffType.ON.equals(item.getStateAs(OnOffType.class))) {
+                            if (OnOffType.ON.equals(item.getStateAs(OnOffType.class)))
                                 command = OnOffType.OFF;
-                            }
-                            if (OnOffType.OFF.equals(item.getStateAs(OnOffType.class))) {
+                            if (OnOffType.OFF.equals(item.getStateAs(OnOffType.class)))
                                 command = OnOffType.ON;
-                            }
-                            if (UpDownType.UP.equals(item.getStateAs(UpDownType.class))) {
+                            if (UpDownType.UP.equals(item.getStateAs(UpDownType.class)))
                                 command = UpDownType.DOWN;
-                            }
-                            if (UpDownType.DOWN.equals(item.getStateAs(UpDownType.class))) {
+                            if (UpDownType.DOWN.equals(item.getStateAs(UpDownType.class)))
                                 command = UpDownType.UP;
-                            }
                         } else {
                             command = TypeParser.parseCommand(item.getAcceptedCommandTypes(), commandString);
                         }
@@ -260,7 +242,6 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
         return "myopenhab";
     }
 
-    @Reference(cardinality = ReferenceCardinality.MANDATORY, policy = ReferencePolicy.DYNAMIC, unbind = "unsetItemRegistry")
     public void setItemRegistry(ItemRegistry itemRegistry) {
         this.itemRegistry = itemRegistry;
     }
@@ -269,7 +250,6 @@ public class MyOpenHABService implements PersistenceService, ActionService, MyOp
         this.itemRegistry = null;
     }
 
-    @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC, unbind = "unsetEventPublisher")
     public void setEventPublisher(EventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
     }

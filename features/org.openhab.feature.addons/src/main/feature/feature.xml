@@ -77,6 +77,7 @@
     </feature>
 
     <feature name="openhab2-addon-binding-fs20" description="" version="${project.version}">
+        <feature>openhab2-addon-transport-cul</feature>
         <bundle start-level="80">mvn:org.openhab.binding/org.openhab.binding.fs20/${oh1.version}</bundle>
     </feature>
 
@@ -286,6 +287,11 @@
     </feature>
 
     <!-- transport -->
+
+    <feature name="openhab2-addon-transport-cul" version="${project.version}">
+        <feature>openhab2-addon-transport-serial</feature>
+        <bundle start-level="80">mvn:org.openhab.io/org.openhab.io.transport.cul/${oh1.version}</bundle>
+    </feature>
 
     <feature name="openhab2-addon-transport-mdns" version="${project.version}">
         <bundle start-level="80">mvn:${dep.jmdns.groupId}/${dep.jmdns.artifactId}/${dep.jmdns.version}</bundle>

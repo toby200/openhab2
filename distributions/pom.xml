@@ -18,6 +18,7 @@
 
   <modules>
     <module>openhab2-runtime</module>
+    <module>openhab2-runtime-repack</module>
   </modules>
 
 </project>

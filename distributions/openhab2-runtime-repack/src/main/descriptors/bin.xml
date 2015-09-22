@@ -1,0 +1,69 @@
+<assembly>
+
+    <id>bin</id>
+
+    <formats>
+        <format>tar.gz</format>
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+
+        <fileSet>
+            <directory>target/dependencies/${repack.artifactId}-${repack.version}</directory>
+            <outputDirectory>/</outputDirectory>
+            <excludes>
+                <exclude>bin/**</exclude>
+                <exclude>data/**</exclude>
+                <exclude>deploy/**</exclude>
+                <exclude>etc/**</exclude>
+                <exclude>lib/**</exclude>
+                <exclude>system/**</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>target/dependencies/${repack.artifactId}-${repack.version}</directory>
+            <outputDirectory>/userdata/karaf-base</outputDirectory>
+            <includes>
+                <include>deploy/**</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>target/dependencies/${repack.artifactId}-${repack.version}</directory>
+            <outputDirectory>/runtime/karaf-home</outputDirectory>
+            <includes>
+                <include>bin/**</include>
+                <include>lib/**</include>
+                <include>system/**</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>target/dependencies/${repack.artifactId}-${repack.version}</directory>
+            <outputDirectory>/userdata/karaf-data</outputDirectory>
+            <includes>
+                <include>data/**</include>
+            </includes>
+        </fileSet>
+
+        <fileSet>
+            <directory>target/dependencies/${repack.artifactId}-${repack.version}/etc</directory>
+            <outputDirectory>/runtime/karaf-etc</outputDirectory>
+        </fileSet>
+
+    </fileSets>
+
+    <files>
+        <file>
+            <source>src/main/resources/start.sh</source>
+            <outputDirectory>/</outputDirectory>
+            <fileMode>0755</fileMode>
+            <lineEnding>unix</lineEnding>
+        </file>
+    </files>
+
+</assembly>

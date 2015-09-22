@@ -63,6 +63,13 @@ rem SET KARAF_OPTS
 rem Enable debug mode
 rem SET KARAF_DEBUG
 
+:: Check if openHAB home is already set.
+:: If not, use Karaf base directory.
+:check_openhab_home
+IF NOT [%OPENHAB_HOME%] == [] GOTO :check_openhab_home_done
+set OPENHAB_HOME=%DIRNAME%..
+:check_openhab_home_done
+
 :: set ports for HTTP(S) server
 :check_http_port
 IF NOT [%OPENHAB_HTTP_PORT%] == [] GOTO :http_port_set
@@ -86,7 +93,9 @@ goto :https_port_done
 
 :https_port_done
 
+:: set java options
 set JAVA_OPTS=%JAVA_OPTS% ^
+  -Dopenhab.home=%OPENHAB_HOME% ^
   -Dorg.osgi.service.http.port=%HTTP_PORT% ^
   -Dorg.osgi.service.http.port.secure=%HTTPS_PORT%
 

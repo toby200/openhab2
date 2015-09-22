@@ -17,9 +17,6 @@
 
 ## low
 
-# not supported on upstream openHAB, but should be done
-* system property for keystore location (jetty)
-
 # For Karaf bumps
 
 * 4.0.2: remove config.properties

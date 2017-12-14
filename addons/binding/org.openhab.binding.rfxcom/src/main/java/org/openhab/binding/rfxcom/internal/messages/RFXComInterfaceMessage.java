@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2015, openHAB.org and others.
+ * Copyright (c) 2010-2017 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,381 +8,307 @@
  */
 package org.openhab.binding.rfxcom.internal.messages;
 
+import static org.openhab.binding.rfxcom.internal.messages.ByteEnumUtil.fromByte;
+
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
-import org.eclipse.smarthome.core.types.State;
 import org.eclipse.smarthome.core.types.Type;
-import org.openhab.binding.rfxcom.RFXComValueSelector;
 import org.openhab.binding.rfxcom.internal.exceptions.RFXComException;
-
 
 /**
  * RFXCOM data class for interface message.
- * 
+ *
  * @author Pauli Anttila - Initial contribution
+ * @author Ivan Martinez - Older firmware support (OH1)
  */
 public class RFXComInterfaceMessage extends RFXComBaseMessage {
 
-	public enum SubType {
-		RESPONSE(0),
-		UNKNOWN_RTS_REMOTE(1),
-		NO_EXTENDED_HW_PRESENT(2),
-		LIST_RFY_REMOTES(3),
-		NOT_USED_4(4),
-		NOT_USED_5(5),
-		NOT_USED_6(6),
-		START_RECEIVER(7),
-		UNKNOWN(255);
+    public enum SubType implements ByteEnumWrapper {
+        UNKNOWN_COMMAND(-1),
+        RESPONSE(0),
+        UNKNOWN_RTS_REMOTE(1),
+        NO_EXTENDED_HW_PRESENT(2),
+        LIST_RFY_REMOTES(3),
+        LIST_ASA_REMOTES(4),
+        START_RECEIVER(7);
 
-		private final int subType;
+        private final int subType;
 
-		SubType(int subType) {
-			this.subType = subType;
-		}
+        SubType(int subType) {
+            this.subType = subType;
+        }
 
-		SubType(byte subType) {
-			this.subType = subType;
-		}
+        @Override
+        public byte toByte() {
+            return (byte) subType;
+        }
+    }
 
-		public byte toByte() {
-			return (byte) subType;
-		}
-	}
+    public enum Commands implements ByteEnumWrapper {
+        RESET(0), // Reset the receiver/transceiver. No answer is transmitted!
+        GET_STATUS(2), // Get Status, return firmware versions and configuration of the interface
+        SET_MODE(3), // Set mode msg1-msg5, return firmware versions and configuration of the interface
+        ENABLE_ALL(4), // Enable all receiving modes of the receiver/transceiver
+        ENABLE_UNDECODED_PACKETS(5), // Enable reporting of undecoded packets
+        SAVE_RECEIVING_MODES(6), // Save receiving modes of the receiver/transceiver in non-volatile memory
+        START_RECEIVER(7), // Start RFXtrx receiver
+        T1(8), // For internal use by RFXCOM
+        T2(9), // For internal use by RFXCOM
 
-	public enum Commands {
-		RESET(0),					// Reset the receiver/transceiver. No answer is transmitted!
-		NOT_USED1(1),				// Not used
-		GET_STATUS(2),				// Get Status, return firmware versions and configuration of the interface
-		SET_MODE(3),				// Set mode msg1-msg5, return firmware versions and configuration of the interface
-		ENABLE_ALL(4),				// Enable all receiving modes of the receiver/transceiver
-		ENABLE_UNDECODED_PACKETS(5),// Enable reporting of undecoded packets
-		SAVE_RECEIVING_MODES(6),	// Save receiving modes of the receiver/transceiver in non-volatile memory
-		START_RECEIVER(7),			// Start RFXtrx receiver
-		T1(8),						// For internal use by RFXCOM
-		T2(9),						// For internal use by RFXCOM
+        UNSUPPORTED_COMMAND(-1); // wrong command received from the application
 
-		UNKNOWN(255);
+        private final int command;
 
-		private final int command;
+        Commands(int command) {
+            this.command = command;
+        }
 
-		Commands(int command) {
-			this.command = command;
-		}
+        @Override
+        public byte toByte() {
+            return (byte) command;
+        }
+    }
 
-		Commands(byte command) {
-			this.command = command;
-		}
+    public enum TransceiverType implements ByteEnumWrapper {
+        _310MHZ(80),
+        _315MHZ(81),
+        _433_92MHZ_RECEIVER_ONLY(82),
+        _433_92MHZ_TRANSCEIVER(83),
+        _868_00MHZ(85),
+        _868_00MHZ_FSK(86),
+        _868_30MHZ(87),
+        _868_30MHZ_FSK(88),
+        _868_35MHZ(89),
+        _868_35MHZ_FSK(90),
+        _868_95MHZ_FSK(91);
 
-		public byte toByte() {
-			return (byte) command;
-		}
-	}
+        private final int type;
 
-	public enum TransceiverType {
-		_310MHZ(80),
-		_315MHZ(81),
-		_443_92MHZ_RECEIVER_ONLY(82),
-		_443_92MHZ_TRANSCEIVER(83),
-		_868_00MHZ(85),
-		_868_00MHZ_FSK(86),
-		_868_30MHZ(87),
-		_868_30MHZ_FSK(88),
-		_868_35MHZ(89),
-		_868_35MHZ_FSK(90),
-		_868_95MHZ_FSK(91),	
+        TransceiverType(int type) {
+            this.type = type;
+        }
 
-		UNKNOWN(255);
+        @Override
+        public byte toByte() {
+            return (byte) type;
+        }
+    }
 
-		private final int type;
+    public enum FirmwareType implements ByteEnumWrapper {
+        TYPE1_RX_ONLY(0),
+        TYPE1(1),
+        TYPE2(2),
+        EXT(3),
+        EXT2(4);
 
-		TransceiverType(int type) {
-			this.type = type;
-		}
+        private final int type;
 
-		TransceiverType(byte type) {
-			this.type = type;
-		}
+        FirmwareType(int type) {
+            this.type = type;
+        }
 
-		public byte toByte() {
-			return (byte) type;
-		}
-	}
+        @Override
+        public byte toByte() {
+            return (byte) type;
+        }
+    }
 
-	public SubType subType = SubType.RESPONSE;
-	public Commands command = Commands.UNKNOWN;
-	public String text = "";
-	
-	public TransceiverType transceiverType = TransceiverType._443_92MHZ_TRANSCEIVER;
-	public int firmwareVersion = 0;
+    public SubType subType;
+    public Commands command;
+    public String text = "";
 
-	public boolean enableUndecodedPackets = false;			// 0x80 - Undecoded packets
-	public boolean enableImagintronixOpusPackets = false;	// 0x40 - Imagintronix/Opus (433.92)
-	public boolean enableByronSXPackets = false;			// 0x20 - Byron SX (433.92)
-	public boolean enableRSLPackets = false;				// 0x10 - RSL (433.92)
-	public boolean enableLighting4Packets = false;			// 0x08 - Lighting4 (433.92)
-	public boolean enableFineOffsetPackets = false;			// 0x04 - FineOffset / Viking (433.92)
-	public boolean enableRubicsonPackets = false;			// 0x02 - Rubicson (433.92)
-	public boolean enableAEPackets = false;					// 0x01 - AE (433.92)
+    public TransceiverType transceiverType;
+    public int firmwareVersion;
 
-	public boolean enableBlindsT1T2T3T4Packets = false;		// 0x80 - BlindsT1/T2/T3/T4 (433.92)
-	public boolean enableBlindsT0Packets = false;			// 0x40 - BlindsT0 (433.92)
-	public boolean enableProGuardPackets = false;			// 0x20 - ProGuard (868.35 FSK)
-	public boolean enableFS20Packets = false;				// 0x10 - FS20 (868.35)
-	public boolean enableLaCrossePackets = false;			// 0x08 - La Crosse (433.92/868.30)
-	public boolean enableHidekiUPMPackets = false;			// 0x04 - Hideki/UPM (433.92)
-	public boolean enableADPackets = false;					// 0x02 - AD LightwaveRF (433.92)
-	public boolean enableMertikPackets = false;				// 0x01 - Mertik (433.92)
+    public boolean enableUndecodedPackets; // 0x80 - Undecoded packets
+    public boolean enableImagintronixOpusPackets; // 0x40 - Imagintronix/Opus (433.92)
+    public boolean enableByronSXPackets; // 0x20 - Byron SX (433.92)
+    public boolean enableRSLPackets; // 0x10 - RSL (433.92)
+    public boolean enableLighting4Packets; // 0x08 - Lighting4 (433.92)
+    public boolean enableFineOffsetPackets; // 0x04 - FineOffset / Viking (433.92)
+    public boolean enableRubicsonPackets; // 0x02 - Rubicson (433.92)
+    public boolean enableAEPackets; // 0x01 - AE (433.92)
 
-	public boolean enableVisonicPackets = false;			// 0x80 - Visonic (315/868.95)
-	public boolean enableATIPackets = false;				// 0x40 - ATI (433.92)
-	public boolean enableOregonPackets = false;				// 0x20 - Oregon Scientific (433.92)
-	public boolean enableMeiantechPackets = false;			// 0x10 - Meiantech (433.92)
-	public boolean enableHomeEasyPackets = false;			// 0x08 - HomeEasy EU (433.92)
-	public boolean enableACPackets = false;					// 0x04 - AC (433.92)
-	public boolean enableARCPackets = false;				// 0x02 - ARC (433.92)
-	public boolean enableX10Packets = false;				// 0x01 - X10 (310/433.92)
+    public boolean enableBlindsT1T2T3T4Packets; // 0x80 - BlindsT1/T2/T3/T4 (433.92)
+    public boolean enableBlindsT0Packets; // 0x40 - BlindsT0 (433.92)
+    public boolean enableProGuardPackets; // 0x20 - ProGuard (868.35 FSK)
+    public boolean enableFS20Packets; // 0x10 - FS20 (868.35)
+    public boolean enableLaCrossePackets; // 0x08 - La Crosse (433.92/868.30)
+    public boolean enableHidekiUPMPackets; // 0x04 - Hideki/UPM (433.92)
+    public boolean enableADPackets; // 0x02 - AD LightwaveRF (433.92)
+    public boolean enableMertikPackets; // 0x01 - Mertik (433.92)
 
-	public byte hardwareVersion1  = 0;
-	public byte hardwareVersion2  = 0;
+    public boolean enableVisonicPackets; // 0x80 - Visonic (315/868.95)
+    public boolean enableATIPackets; // 0x40 - ATI (433.92)
+    public boolean enableOregonPackets; // 0x20 - Oregon Scientific (433.92)
+    public boolean enableMeiantechPackets; // 0x10 - Meiantech (433.92)
+    public boolean enableHomeEasyPackets; // 0x08 - HomeEasy EU (433.92)
+    public boolean enableACPackets; // 0x04 - AC (433.92)
+    public boolean enableARCPackets; // 0x02 - ARC (433.92)
+    public boolean enableX10Packets; // 0x01 - X10 (310/433.92)
 
-	public RFXComInterfaceMessage() {
+    public boolean enableHomeConfortPackets; // 0x02 - HomeConfort (433.92)
+    public boolean enableKEELOQPackets; // 0x01 - KEELOQ (433.92)
 
-	}
+    public byte hardwareVersion1;
+    public byte hardwareVersion2;
 
-	public RFXComInterfaceMessage( byte[] data ) {
-		encodeMessage( data );
-	}
+    public int outputPower; // -18dBm to +13dBm. N.B. maximum allowed is +10dBm
 
-	@Override
-	public String toString() {
-		String str = "";
+    public FirmwareType firmwareType;
 
-		str += super.toString();
-		str += ", Sub type = " + subType;
-		str += ", Command = " + command;
+    public RFXComInterfaceMessage(byte[] data) throws RFXComException {
+        encodeMessage(data);
+    }
 
-		if (subType == SubType.RESPONSE) {
+    @Override
+    public String toString() {
+        String str = "";
 
-			str += ", Transceiver type = " + transceiverType;
-			str += ", Firmware version = " + firmwareVersion;
-			str += ", Hardware version = " + hardwareVersion1 + "."
-					+ hardwareVersion2;
-			str += ", Undecoded packets = " + enableUndecodedPackets;
-			str += ", RFU6 packets = " + enableImagintronixOpusPackets;
-			str += ", Byron SX packets packets (433.92) = "
-					+ enableByronSXPackets;
-			str += ", RSL packets packets (433.92) = " + enableRSLPackets;
-			str += ", Lighting4 packets (433.92) = " + enableLighting4Packets;
-			str += ", FineOffset / Viking (433.92) packets = "
-					+ enableFineOffsetPackets;
-			str += ", Rubicson (433.92) packets = " + enableRubicsonPackets;
-			str += ", AE (433.92) packets = " + enableAEPackets;
+        str += super.toString();
+        str += ", Sub type = " + subType;
+        str += ", Command = " + command;
 
-			str += ", BlindsT1/T2/T3 (433.92) packets = "
-					+ enableBlindsT1T2T3T4Packets;
-			str += ", BlindsT0 (433.92) packets = " + enableBlindsT0Packets;
-			str += ", ProGuard (868.35 FSK) packets = " + enableProGuardPackets;
-			str += ", FS20 (868.35) packets = " + enableFS20Packets;
-			str += ", La Crosse (433.92/868.30) packets = "
-					+ enableLaCrossePackets;
-			str += ", Hideki/UPM (433.92) packets = " + enableHidekiUPMPackets;
-			str += ", AD LightwaveRF (433.92) packets = " + enableADPackets;
-			str += ", Mertik (433.92) packets = " + enableMertikPackets;
+        if (subType == SubType.RESPONSE) {
 
-			str += ", Visonic (315/868.95) packets = " + enableVisonicPackets;
-			str += ", ATI (433.92) packets = " + enableATIPackets;
-			str += ", Oregon Scientific (433.92) packets = "
-					+ enableOregonPackets;
-			str += ", Meiantech (433.92) packets = " + enableMeiantechPackets;
-			str += ", HomeEasy EU (433.92) packets = " + enableHomeEasyPackets;
-			str += ", AC (433.92) packets = " + enableACPackets;
-			str += ", ARC (433.92) packets = " + enableARCPackets;
-			str += ", X10 (310/433.92) packets = " + enableX10Packets;
-		} else if (subType == SubType.START_RECEIVER) {
-			str += ", Text = " + text;
-		}
+            str += ", Transceiver type = " + transceiverType;
+            str += ", Hardware version = " + hardwareVersion1 + "." + hardwareVersion2;
+            str += ", Firmware type = " + (firmwareType != null ? firmwareType : "unknown");
+            str += ", Firmware version = " + firmwareVersion;
+            str += ", Output power = " + outputPower + "dBm";
+            str += ", Undecoded packets = " + enableUndecodedPackets;
+            str += ", RFU6 packets = " + enableImagintronixOpusPackets;
+            str += ", Byron SX packets packets (433.92) = " + enableByronSXPackets;
+            str += ", RSL packets packets (433.92) = " + enableRSLPackets;
+            str += ", Lighting4 packets (433.92) = " + enableLighting4Packets;
+            str += ", FineOffset / Viking (433.92) packets = " + enableFineOffsetPackets;
+            str += ", Rubicson (433.92) packets = " + enableRubicsonPackets;
+            str += ", AE (433.92) packets = " + enableAEPackets;
 
-		return str;
-	}
+            str += ", BlindsT1/T2/T3 (433.92) packets = " + enableBlindsT1T2T3T4Packets;
+            str += ", BlindsT0 (433.92) packets = " + enableBlindsT0Packets;
+            str += ", ProGuard (868.35 FSK) packets = " + enableProGuardPackets;
+            str += ", FS20/Legrand CAD (868.35/433.92) packets = " + enableFS20Packets;
+            str += ", La Crosse (433.92/868.30) packets = " + enableLaCrossePackets;
+            str += ", Hideki/UPM (433.92) packets = " + enableHidekiUPMPackets;
+            str += ", AD LightwaveRF (433.92) packets = " + enableADPackets;
+            str += ", Mertik (433.92) packets = " + enableMertikPackets;
 
-	@Override
-	public void encodeMessage(byte[] data) {
+            str += ", Visonic (315/868.95) packets = " + enableVisonicPackets;
+            str += ", ATI (433.92) packets = " + enableATIPackets;
+            str += ", Oregon Scientific (433.92) packets = " + enableOregonPackets;
+            str += ", Meiantech (433.92) packets = " + enableMeiantechPackets;
+            str += ", HomeEasy EU (433.92) packets = " + enableHomeEasyPackets;
+            str += ", AC (433.92) packets = " + enableACPackets;
+            str += ", ARC (433.92) packets = " + enableARCPackets;
+            str += ", X10 (310/433.92) packets = " + enableX10Packets;
 
-		super.encodeMessage(data);
+            str += ", HomeConfort (433.92) packets = " + enableHomeConfortPackets;
+            str += ", KEELOQ (433.92/868.95) packets = " + enableKEELOQPackets;
+        } else if (subType == SubType.START_RECEIVER) {
+            str += ", Text = " + text;
+        }
 
-		try {
-			subType = SubType.values()[super.subType];
-		} catch (Exception e) {
-			subType = SubType.UNKNOWN;
-		}
-		try {
-			command = Commands.values()[data[4]];
-		} catch (Exception e) {
-			command = Commands.UNKNOWN;
-		}
+        return str;
+    }
 
-		if (subType == SubType.RESPONSE) {
-			transceiverType = TransceiverType.UNKNOWN;
+    @Override
+    public void encodeMessage(byte[] data) throws RFXComException {
 
-			for (TransceiverType type : TransceiverType.values()) {
-				if (type.toByte() == data[5]) {
-					transceiverType = type;
-					break;
-				}
-			}
+        super.encodeMessage(data);
 
-			firmwareVersion = data[6] & 0xFF;
+        subType = fromByte(SubType.class, super.subType);
 
-			enableUndecodedPackets = (data[7] & 0x80) != 0 ? true : false;
-			enableImagintronixOpusPackets = (data[7] & 0x40) != 0 ? true
-					: false;
-			enableByronSXPackets = (data[7] & 0x20) != 0 ? true : false;
-			enableRSLPackets = (data[7] & 0x10) != 0 ? true : false;
-			enableLighting4Packets = (data[7] & 0x08) != 0 ? true : false;
-			enableFineOffsetPackets = (data[7] & 0x04) != 0 ? true : false;
-			enableRubicsonPackets = (data[7] & 0x02) != 0 ? true : false;
-			enableAEPackets = (data[7] & 0x01) != 0 ? true : false;
+        if (subType == SubType.RESPONSE) {
+            command = fromByte(Commands.class, data[4]);
+            transceiverType = fromByte(TransceiverType.class, data[5]);
 
-			enableBlindsT1T2T3T4Packets = (data[8] & 0x80) != 0 ? true : false;
-			enableBlindsT0Packets = (data[8] & 0x40) != 0 ? true : false;
-			enableProGuardPackets = (data[8] & 0x20) != 0 ? true : false;
-			enableFS20Packets = (data[8] & 0x10) != 0 ? true : false;
-			enableLaCrossePackets = (data[8] & 0x08) != 0 ? true : false;
-			enableHidekiUPMPackets = (data[8] & 0x04) != 0 ? true : false;
-			enableADPackets = (data[8] & 0x02) != 0 ? true : false;
-			enableMertikPackets = (data[8] & 0x01) != 0 ? true : false;
+            firmwareVersion = data[6] & 0xFF;
 
-			enableVisonicPackets = (data[9] & 0x80) != 0 ? true : false;
-			enableATIPackets = (data[9] & 0x40) != 0 ? true : false;
-			enableOregonPackets = (data[9] & 0x20) != 0 ? true : false;
-			enableMeiantechPackets = (data[9] & 0x10) != 0 ? true : false;
-			enableHomeEasyPackets = (data[9] & 0x08) != 0 ? true : false;
-			enableACPackets = (data[9] & 0x04) != 0 ? true : false;
-			enableARCPackets = (data[9] & 0x02) != 0 ? true : false;
-			enableX10Packets = (data[9] & 0x01) != 0 ? true : false;
+            enableUndecodedPackets = (data[7] & 0x80) != 0;
+            enableImagintronixOpusPackets = (data[7] & 0x40) != 0;
+            enableByronSXPackets = (data[7] & 0x20) != 0;
+            enableRSLPackets = (data[7] & 0x10) != 0;
+            enableLighting4Packets = (data[7] & 0x08) != 0;
+            enableFineOffsetPackets = (data[7] & 0x04) != 0;
+            enableRubicsonPackets = (data[7] & 0x02) != 0;
+            enableAEPackets = (data[7] & 0x01) != 0;
 
-			hardwareVersion1 = data[10];
-			hardwareVersion2 = data[11];
+            enableBlindsT1T2T3T4Packets = (data[8] & 0x80) != 0;
+            enableBlindsT0Packets = (data[8] & 0x40) != 0;
+            enableProGuardPackets = (data[8] & 0x20) != 0;
+            enableFS20Packets = (data[8] & 0x10) != 0;
+            enableLaCrossePackets = (data[8] & 0x08) != 0;
+            enableHidekiUPMPackets = (data[8] & 0x04) != 0;
+            enableADPackets = (data[8] & 0x02) != 0;
+            enableMertikPackets = (data[8] & 0x01) != 0;
 
-			text = "";
+            enableVisonicPackets = (data[9] & 0x80) != 0;
+            enableATIPackets = (data[9] & 0x40) != 0;
+            enableOregonPackets = (data[9] & 0x20) != 0;
+            enableMeiantechPackets = (data[9] & 0x10) != 0;
+            enableHomeEasyPackets = (data[9] & 0x08) != 0;
+            enableACPackets = (data[9] & 0x04) != 0;
+            enableARCPackets = (data[9] & 0x02) != 0;
+            enableX10Packets = (data[9] & 0x01) != 0;
 
-		} else if (subType == SubType.START_RECEIVER) {
-			final int len = 16;
-			final int dataOffset = 5;
-			
-			byte[] byteArray = new byte[len];
-			
-			for (int i=dataOffset; i<(dataOffset+len); i++) {
-				byteArray[i-dataOffset] += data[i];
-			}
-			
-			try {
-				text = new String(byteArray, "ASCII");
-			} catch (UnsupportedEncodingException e) {
-				// ignore
-			}
-		}
-	}
+            /*
+             * Different firmware versions have slightly different message formats.
+             * The firmware version numbering is unique to each hardware version
+             * but the location of the hardware version in the message is one of
+             * those things whose position varies. So we have to just look at the
+             * firmware version and pray. This condition below is taken from the
+             * openhab1-addons binding.
+             */
+            if ((firmwareVersion >= 95 && firmwareVersion <= 100) || (firmwareVersion >= 195 && firmwareVersion <= 200)
+                    || (firmwareVersion >= 251)) {
+                enableHomeConfortPackets = (data[10] & 0x02) != 0;
+                enableKEELOQPackets = (data[10] & 0x01) != 0;
 
-	@Override
-	public byte[] decodeMessage() {
+                hardwareVersion1 = data[11];
+                hardwareVersion2 = data[12];
 
-		byte[] data = new byte[13];
+                outputPower = data[13] - 18;
+                firmwareType = fromByte(FirmwareType.class, data[14]);
+            } else {
+                hardwareVersion1 = data[10];
+                hardwareVersion2 = data[11];
+            }
 
-		data[0] = 0x0D;
-		data[1] = RFXComBaseMessage.PacketType.INTERFACE_MESSAGE.toByte();
-		data[2] = subType.toByte();
-		data[3] = seqNbr;
-		data[4] = command.toByte();
-		data[5] = transceiverType.toByte();
-		data[6] = 0;
+            text = "";
 
-		data[7] |= enableUndecodedPackets ? 0x80 : 0x00;
-		data[7] |= enableImagintronixOpusPackets ? 0x40 : 0x00;
-		data[7] |= enableByronSXPackets ? 0x20 : 0x00;
-		data[7] |= enableRSLPackets ? 0x10 : 0x00;
-		data[7] |= enableLighting4Packets ? 0x08 : 0x00;
-		data[7] |= enableFineOffsetPackets ? 0x04 : 0x00;
-		data[7] |= enableRubicsonPackets ? 0x02 : 0x00;
-		data[7] |= enableAEPackets ? 0x01 : 0x00;
+        } else if (subType == SubType.START_RECEIVER) {
+            command = fromByte(Commands.class, data[4]);
 
-		data[8] |= enableBlindsT1T2T3T4Packets ? 0x80 : 0x00;
-		data[8] |= enableBlindsT0Packets ? 0x40 : 0x00;
-		data[8] |= enableProGuardPackets ? 0x20 : 0x00;
-		data[8] |= enableFS20Packets ? 0x10 : 0x00;
-		data[8] |= enableLaCrossePackets ? 0x08 : 0x00;
-		data[8] |= enableHidekiUPMPackets ? 0x04 : 0x00;
-		data[8] |= enableADPackets ? 0x02 : 0x00;
-		data[8] |= enableMertikPackets ? 0x01 : 0x00;
+            final int len = 16;
+            final int dataOffset = 5;
 
-		data[9] |= enableVisonicPackets ? 0x80 : 0x00;
-		data[9] |= enableATIPackets ? 0x40 : 0x00;
-		data[9] |= enableOregonPackets ? 0x20 : 0x00;
-		data[9] |= enableMeiantechPackets ? 0x10 : 0x00;
-		data[9] |= enableHomeEasyPackets ? 0x08 : 0x00;
-		data[9] |= enableACPackets ? 0x04 : 0x00;
-		data[9] |= enableARCPackets ? 0x02 : 0x00;
-		data[9] |= enableX10Packets ? 0x01 : 0x00;
+            byte[] byteArray = new byte[len];
 
-		data[10] = hardwareVersion1;
-		data[11] = hardwareVersion2;
-		data[12] = 0;
-		data[13] = 0;
+            for (int i = dataOffset; i < (dataOffset + len); i++) {
+                byteArray[i - dataOffset] += data[i];
+            }
 
-		return data;
-	}
+            try {
+                text = new String(byteArray, "ASCII");
+            } catch (UnsupportedEncodingException e) {
+                // ignore
+            }
+        } else {
+            // We don't handle the other subTypes but to avoid null pointer
+            // exceptions we set command to something. It doesn't really
+            // matter what but it may b printed in log messages so...
+            command = Commands.UNSUPPORTED_COMMAND;
+        }
+    }
 
-	@Override
-	public State convertToState(RFXComValueSelector valueSelector)
-			throws RFXComException {
+    @Override
+    public byte[] decodeMessage() throws RFXComException {
+        throw new UnsupportedOperationException();
+    }
 
-		throw new RFXComException("Not supported");
-	}
-
-	@Override
-	public void setSubType(Object subType) throws RFXComException {
-		throw new RFXComException("Not supported");
-	}
-
-	@Override
-	public void setDeviceId(String deviceId) throws RFXComException {
-		throw new RFXComException("Not supported");
-	}
-
-	@Override
-	public void convertFromState(RFXComValueSelector valueSelector, Type type)
-			throws RFXComException {
-		
-		throw new RFXComException("Not supported");
-	}
-
-	@Override
-	public Object convertSubType(String subType) throws RFXComException {
-		
-		for (SubType s : SubType.values()) {
-			if (s.toString().equals(subType)) {
-				return s;
-			}
-		}
-		
-		// try to find sub type by number
-		try {
-			return SubType.values()[Integer.parseInt(subType)];
-		} catch (Exception e) {
-			throw new RFXComException("Unknown sub type " + subType);
-		}
-	}
-	
-	@Override
-	public List<RFXComValueSelector> getSupportedInputValueSelectors() throws RFXComException {
-		return null;
-	}
-
-	@Override
-	public List<RFXComValueSelector> getSupportedOutputValueSelectors()
-			throws RFXComException {
-		return null;
-	}
-
+    @Override
+    public void convertFromState(String channelId, Type type) {
+        throw new UnsupportedOperationException();
+    }
 }

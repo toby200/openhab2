@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2015, openHAB.org and others.
+ * Copyright (c) 2010-2017 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,136 +8,139 @@
  */
 package org.openhab.binding.rfxcom.internal.messages;
 
+import static org.openhab.binding.rfxcom.internal.messages.ByteEnumUtil.fromByte;
+
 import javax.xml.bind.DatatypeConverter;
+
+import org.openhab.binding.rfxcom.internal.config.RFXComDeviceConfiguration;
+import org.openhab.binding.rfxcom.internal.exceptions.RFXComException;
 
 /**
  * Base class for RFXCOM data classes. All other data classes should extend this class.
- * 
+ *
  * @author Pauli Anttila - Initial contribution
  */
 public abstract class RFXComBaseMessage implements RFXComMessage {
 
-	public final static String ID_DELIMITER = ".";
-	
-	public enum PacketType {
-		INTERFACE_CONTROL(0),
-		INTERFACE_MESSAGE(1),
-		TRANSMITTER_MESSAGE(2),
-		UNDECODED_RF_MESSAGE(3),
-		LIGHTING1(16),
-		LIGHTING2(17),
-		LIGHTING3(18),
-		LIGHTING4(19),
-		LIGHTING5(20),
-		LIGHTING6(21),
-		CHIME(22),
-		FAN(23),
-		CURTAIN1(24),
-		BLINDS1(25),
-		RFY(26),
-		SECURITY1(32),
-		CAMERA1(40),
-		REMOTE_CONTROL(48),
-		THERMOSTAT1(64),
-		THERMOSTAT2(65),
-		THERMOSTAT3(66),
-		BBQ1(78),
-		TEMPERATURE_RAIN(79),
-		TEMPERATURE(80),
-		HUMIDITY(81),
-		TEMPERATURE_HUMIDITY(82),
-		BAROMETRIC(83),
-		TEMPERATURE_HUMIDITY_BAROMETRIC(84),
-		RAIN(85),
-		WIND(86),
-		UV(87),
-		DATE_TIME(88),
-		CURRENT(89),
-		ENERGY(90),
-		CURRENT_ENERGY(91),
-		POWER(92),
-		WEIGHT(93),
-		GAS(94),
-		WATER(95),
-		RFXSENSOR(112),
-		RFXMETER(113),
-		FS20(114),
-		IO_LINES(128),
-		
-		UNKNOWN(255);
+    public static final String ID_DELIMITER = ".";
 
-		private final int packetType;
-		
-		PacketType(int packetType) {
-			this.packetType = packetType;
-		}
+    public enum PacketType implements ByteEnumWrapper {
+        INTERFACE_CONTROL(0),
+        INTERFACE_MESSAGE(1),
+        TRANSMITTER_MESSAGE(2),
+        UNDECODED_RF_MESSAGE(3),
+        LIGHTING1(16),
+        LIGHTING2(17),
+        LIGHTING3(18),
+        LIGHTING4(19),
+        LIGHTING5(20),
+        LIGHTING6(21),
+        CHIME(22),
+        FAN(23),
+        CURTAIN1(24),
+        BLINDS1(25),
+        RFY(26),
+        HOME_CONFORT(27),
+        EDISIO(28),
+        SECURITY1(32),
+        SECURITY2(33),
+        CAMERA1(40),
+        REMOTE_CONTROL(48),
+        THERMOSTAT1(64),
+        THERMOSTAT2(65),
+        THERMOSTAT3(66),
+        THERMOSTAT4(67),
+        RADIATOR1(72),
+        BBQ(78),
+        TEMPERATURE_RAIN(79),
+        TEMPERATURE(80),
+        HUMIDITY(81),
+        TEMPERATURE_HUMIDITY(82),
+        BAROMETRIC(83),
+        TEMPERATURE_HUMIDITY_BAROMETRIC(84),
+        RAIN(85),
+        WIND(86),
+        UV(87),
+        DATE_TIME(88),
+        CURRENT(89),
+        ENERGY(90),
+        CURRENT_ENERGY(91),
+        POWER(92),
+        WEIGHT(93),
+        GAS(94),
+        WATER(95),
+        CARTELECTRONIC(96),
+        RFXSENSOR(112),
+        RFXMETER(113),
+        FS20(114),
+        IO_LINES(128);
 
-		PacketType(byte packetType) {
-			this.packetType = packetType;
-		}
+        private final int packetType;
 
-		public byte toByte() {
-			return (byte) packetType;
-		}
-		
-	}
+        PacketType(int packetType) {
+            this.packetType = packetType;
+        }
 
-	public byte[] rawMessage;
-	public PacketType packetType = PacketType.UNKNOWN;
-	public byte packetId = 0;
-	public byte subType = 0;
-	public byte seqNbr = 0;
-	public byte id1 = 0;
-	public byte id2 = 0;
+        @Override
+        public byte toByte() {
+            return (byte) packetType;
+        }
+    }
 
-	public RFXComBaseMessage() {
+    public byte[] rawMessage;
+    private PacketType packetType;
+    public byte packetId;
+    public byte subType;
+    public byte seqNbr;
+    public byte id1;
+    public byte id2;
 
-	}
+    public RFXComBaseMessage() {
 
-	public RFXComBaseMessage(byte[] data) {
-		encodeMessage(data);
-	}
+    }
 
-	public void encodeMessage(byte[] data) {
+    public RFXComBaseMessage(PacketType packetType) {
+        this.packetType = packetType;
+    }
 
-		rawMessage = data;
+    @Override
+    public void encodeMessage(byte[] data) throws RFXComException {
 
-		packetType = PacketType.UNKNOWN;
-		packetId = data[1];
-		
-		for (PacketType pt : PacketType.values()) {
-			if (pt.toByte() == data[1]) {
-				packetType = pt;
-				break;
-			}
-		}
+        rawMessage = data;
 
-		subType = data[2];
-		seqNbr = data[3];
-		id1 = data[4];
+        packetId = data[1];
+        packetType = fromByte(PacketType.class, data[1]);
+        subType = data[2];
+        seqNbr = data[3];
+        id1 = data[4];
 
-		if (data.length > 5) {
-			id2 = data[5];
-		}
+        if (data.length > 5) {
+            id2 = data[5];
+        }
+    }
 
-	}
+    public PacketType getPacketType() {
+        return packetType;
+    }
 
-	public String toString() {
-		String str = "";
+    @Override
+    public String toString() {
+        String str;
 
-		if (rawMessage == null) {
-			str += "Raw data = unknown";
-		} else {
-			str += "Raw data = " + DatatypeConverter.printHexBinary(rawMessage);	
-		}
-		
-		str += ", Packet type = " + packetType;
-        str += ", Seq number = " + (short)(seqNbr & 0xFF);
+        if (rawMessage == null) {
+            str = "Raw data = unknown";
+        } else {
+            str = "Raw data = " + DatatypeConverter.printHexBinary(rawMessage);
+        }
 
-		return str;
-	}
-	
-	public String getDeviceId() {
-		return id1 + ID_DELIMITER + id2;
-	}	
+        str += ", Packet type = " + packetType;
+        str += ", Seq number = " + (short) (seqNbr & 0xFF);
+
+        return str;
+    }
+
+    @Override
+    public void setConfig(RFXComDeviceConfiguration deviceConfiguration) throws RFXComException {
+        // noop
+    }
 }
